@@ -163,7 +163,7 @@ function signOut() {
 var signined = false;
 function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
-	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email:' profile.getEmail() };
+	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email': profile.getEmail() };
 	console.log(pro);
 	var signined = true;
 	setheader(signined)
