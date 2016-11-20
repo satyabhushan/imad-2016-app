@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com">
+<style type="text/css">
+*{
+}
+body{
+margin: 0; font-family: lato; font-size: 16px;
+}
+header{
+position: fixed; width:100%; height:50px; background: #4daf4d; z-index: 900;
+}
+.vm{
+position: relative; width:85px; display: inline-block; vertical-align: middle;
+}
+.incenter{
+position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
+}
+</style>
+<script type="text/javascript">
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	console.log('Name: ' + profile.getName());
+	console.log('Image URL: ' + profile.getImageUrl());
+	console.log('Email: ' + profile.getEmail());
+}
+function signOut() {
+	var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+	console.log('User signed out.');
+	});
+}
+</script>
+</head>
+<body>
+
+<header></header>
+
+<div style="position: relative; top:50px;">
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<a href="#" onclick="signOut();">Sign out</a>
+	<div class="artcon">
+		<div style="height:250px; width: 100%; overflow: hidden; background-position: center; background-size: cover; position: relative;background-image: url(http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576);">
+			<div style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 80%,  rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.7) 100%); position: relative; height: 100%;">
+				<div style="width: 650px;margin: auto;height: 100%;position: relative;">
+					<div class="incenter" style="text-align: center; color: white; font-size: 40px; font-weight: bold;">Its an article right now.</div>
+					<div style="position: absolute; bottom: 0; left: 0px; width: 100%; padding:10px 20px; box-sizing: border-box;">
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div style="margin: auto; width:650px; padding: 20px; box-sizing: border-box;">
+				<div class="reviews" style="height: 50px;">
+					<div class="vm" style="border-right: 1px solid #ccc; padding-right: 15px; ">
+						<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display: inline-block; vertical-align: middle; width: 40px;"><path d="M16 31.3l-.5-.3c-.3-.2-8.3-4.9-12.8-12.1C.3 15.1-.5 11.1.6 7.6c.9-2.9 2.8-5.1 5.6-6.3 1-.4 2-.7 2.9-.7 3.2 0 5.7 2.2 6.9 3.6C17.3 2.8 19.7.6 22.9.6c1 0 2 .2 2.9.7 2.8 1.2 4.7 3.5 5.6 6.3 1 3.5.3 7.5-2.1 11.3-4.5 7.2-12.4 11.9-12.7 12.1l-.6.3zM9.1 2.8c-.7 0-1.4.2-2.1.5-2.2 1-3.7 2.8-4.4 5-.9 2.9-.2 6.3 1.9 9.5 3.6 5.7 9.7 9.8 11.5 11 1.9-1.2 7.9-5.4 11.5-11 2.1-3.3 2.7-6.6 1.9-9.5-.7-2.2-2.2-4-4.4-5-.7-.3-1.4-.5-2.1-.5-3.4 0-6 3.8-6 3.8L16 8l-.9-1.4s-2.6-3.8-6-3.8z"/></svg>
+						<div style="display: inline-block; vertical-align: middle; font-size: 22px; margin-left: 10px; ">24</div>
+					</div>
+					<div class="vm" style="padding-left: 10px;">
+						<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display: inline-block; vertical-align: middle; width: 40px;"><path d="M30.5 31.7c-.1 0-.3 0-.4-.1l-5.8-2c-.3-.1-.7-.1-1 .1-2.8 1.5-6.1 2.2-9.3 1.8C6.8 30.7 1 24.8.3 17.6-.2 12.9 1.4 8.3 4.7 5 8 1.7 12.5 0 17.2.4c7.1.6 13 6.1 14.1 13.1.5 3.1.1 6.3-1.3 9.2-.1.3-.2.6-.1.9l1.9 6.6c.1.5 0 1-.4 1.3-.3.1-.6.2-.9.2zM15.9 2.3c-3.7 0-7.2 1.5-9.8 4.1-2.9 2.9-4.3 6.9-3.8 11 .6 6.3 5.7 11.4 12 12.1 2.8.3 5.6-.2 8.1-1.6.8-.4 1.7-.5 2.6-.2l4.6 1.6-1.6-5.2c-.2-.7-.2-1.6.2-2.3 1.2-2.5 1.6-5.3 1.1-8-.9-6.2-6.1-11-12.3-11.5h-1.1z"/></svg></svg>
+						<div style="display: inline-block; vertical-align: middle;">24</div>
+					</div>
+				</div>
+				<div>
+					<div style="font-size: 20px; line-height: 1.6em;">
+						In 2011, a few years into the brand-new e-reader craze, The New York Times weighed in on a common claim: unlike with a backpack, you can fill a digital device up with books and see no change in weight. To find out whether this was true, they turned to UC Berkeley computer science professor John D. Kubiatowicz. His answer? False.
+						In 2011, a few years into the brand-new e-reader craze, The New York Times weighed in on a common claim: unlike with a backpack, you can fill a digital device up with books and see no change in weight. To find out whether this was true, they turned to UC Berkeley computer science professor John D. Kubiatowicz. His answer? False.
+						In 2011, a few years into the brand-new e-reader craze, The New York Times weighed in on a common claim: unlike with a backpack, you can fill a digital device up with books and see no change in weight. To find out whether this was true, they turned to UC Berkeley computer science professor John D. Kubiatowicz. His answer? False.In 2011, a few years into the brand-new e-reader craze, The New York Times weighed in on a common claim: unlike with a backpack, you can fill a digital device up with books and see no change in weight. To find out whether this was true, they turned to UC Berkeley computer science professor John D. Kubiatowicz. His answer? False.
+					</div>
+				</div>
+				<div class="" style="margin-top: 30px; border-top:1px solid #ccc;">
+					<div class="head" style="margin: 20px 0;font-size: 22px;font-weight: bold;">Responses</div>
+					<div class="" style="">
+						<div class="position:relative; margin-bottom20px;" style="">
+							<div class="writeresprev" style="padding: 15px;position: relative;height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px; cursor: pointer;">
+								<div class="incenter">
+									<div style="display: inline-block;vertical-align: middle;width: 25px;margin-right: 15px;">
+										<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.5 31.7c-.1 0-.3 0-.4-.1l-5.8-2c-.3-.1-.7-.1-1 .1-2.8 1.5-6.1 2.2-9.3 1.8C6.8 30.7 1 24.8.3 17.6-.2 12.9 1.4 8.3 4.7 5 8 1.7 12.5 0 17.2.4c7.1.6 13 6.1 14.1 13.1.5 3.1.1 6.3-1.3 9.2-.1.3-.2.6-.1.9l1.9 6.6c.1.5 0 1-.4 1.3-.3.1-.6.2-.9.2zM15.9 2.3c-3.7 0-7.2 1.5-9.8 4.1-2.9 2.9-4.3 6.9-3.8 11 .6 6.3 5.7 11.4 12 12.1 2.8.3 5.6-.2 8.1-1.6.8-.4 1.7-.5 2.6-.2l4.6 1.6-1.6-5.2c-.2-.7-.2-1.6.2-2.3 1.2-2.5 1.6-5.3 1.1-8-.9-6.2-6.1-11-12.3-11.5h-1.1z"/></svg></svg>
+									</div>
+									<div style="display: inline-block;vertical-align: middle;font-size: 20px;">Write your response.</div>
+								</div>
+							</div>
+							<div class="writeres" style="display: none; padding: 15px; position: relative; background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+								<div class="writehere" contenteditable="true" style="min-height: 50px;background:white;padding: 15px;border: 1px solid #e1e1e1;"></div>
+								<div style="display: inline-block; padding: 7px 20px; background: #34a1ef; color: white; font-weight: bold; margin-top: 14px; border-radius: 5px; cursor: pointer;">Post</div>
+							</div>
+						</div>
+						<div>
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
+									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
+								</div>
+								<div style="width:calc(100% - 50px); margin-left: 65px;">
+									<div style="font-weight: bold; ">Satyabhushan Gupta</div>
+									<div style="margin-top: 7px;">Its an comment</div>
+								</div>
+							</div>
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
+									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
+								</div>
+								<div style="width:calc(100% - 50px); margin-left: 65px;">
+									<div style="font-weight: bold; ">Satyabhushan Gupta</div>
+									<div style="margin-top: 7px;">Its an comment</div>
+								</div>
+							</div>
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
+									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
+								</div>
+								<div style="width:calc(100% - 50px); margin-left: 65px;">
+									<div style="font-weight: bold; ">Satyabhushan Gupta</div>
+									<div style="margin-top: 7px;">Its an comment</div>
+								</div>
+							</div>
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
+									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
+								</div>
+								<div style="width:calc(100% - 50px); margin-left: 65px;">
+									<div style="font-weight: bold; ">Satyabhushan Gupta</div>
+									<div style="margin-top: 7px;">Its an comment</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="artmore">
+		
+	</div>
+	<div class="footer"></div>
+</div>
+<script type="text/javascript">
+(function(){
+	$('.writeresprev').on('click',function(){
+		$(this).css('display','none');
+		$('.writeres').css('display','block').children('.writehere').focus();
+	})
+	// client-id:  6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com 
+	// client-secret:  4e77bonMXiwqe7XH3qFwYl4b
+})()
+</script>
+</body>
+</html>
