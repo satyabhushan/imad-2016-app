@@ -21,13 +21,6 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 }
 </style>
 <script type="text/javascript">
-function onSignIn(googleUser) {
-	var profile = googleUser.getBasicProfile();
-	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	console.log('Name: ' + profile.getName());
-	console.log('Image URL: ' + profile.getImageUrl());
-	console.log('Email: ' + profile.getEmail());
-}
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
@@ -38,7 +31,12 @@ function signOut() {
 </head>
 <body>
 
-<header></header>
+<header>
+	<div style="width:650px; margin:auto; position: relative;">
+		<div style=""></div>
+		<div></div>
+	</div>
+</header>
 
 <div style="position: relative; top:50px;">
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -145,12 +143,40 @@ function signOut() {
 <script type="text/javascript">
 (function(){
 	$('.writeresprev').on('click',function(){
-		$(this).css('display','none');
-		$('.writeres').css('display','block').children('.writehere').focus();
+		if(!signined){
+
+		}else{
+			$(this).css('display','none');
+			$('.writeres').css('display','block').children('.writehere').focus();
+		}
 	})
 	// client-id:  6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com 
 	// client-secret:  4e77bonMXiwqe7XH3qFwYl4b
 })()
+</script>
+<script type="text/javascript">
+(function(){
+	window.onload = function(){
+
+	}
+})()
+var signined = false;
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email:' profile.getEmail() };
+	console.log(pro);
+	var signined = true;
+	setheader(signined)
+	setDatabase(profile)
+}
+
+function setheader(){
+	if(!signined){
+
+	}else{
+
+	}
+}
 </script>
 </body>
 </html>
