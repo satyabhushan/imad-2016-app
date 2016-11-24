@@ -216,20 +216,20 @@ function signOut() {
 	    document.getElementById('comments').innerHTML = data.noofcomments;
 	    document.getElementsByClassName('artdes')[0].innerHTML = data.artdes;
         console.log(d.src);
+        loading('988/'+global.artid,loadComm)
 	}
 	
 	function loadComm(data){
-	    
+	    console.log('lll')
 	}
     
 	window.onload = function(){
 	    var url = window.location;
 	    var artid = url.pathname;
-	    //artid.split('/')[1];
-		loading(artid.split('/')[2],loadArt);
+		loading('988/'+artid.split('/')[2],loadArt);
 	}
 
-	function loading(artid,callback,url){
+	function loading(url,callback){
 		var xhttp = new XMLHttpRequest();
 	  	xhttp.onreadystatechange = function() {
 	    	if (this.readyState == 4 && this.status == 200) {
@@ -238,7 +238,7 @@ function signOut() {
 	    		callback.call('',this.responseText)
 	  		}
 	  	};
-	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/'+artid,true);
+	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/'+artid,true);
      	xhttp.setRequestHeader('Content-type','application/json');
     	xhttp.send();
 	}
