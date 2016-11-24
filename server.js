@@ -74,7 +74,7 @@ app.get('/987/:id',function(req,res){
                    if(err1){
                         res.status(500).send(err.toString());
                    } else{
-                        res.send(result1.rows[0].length);
+                        res.send(result1.rows.length);
                    }
                });
            }
