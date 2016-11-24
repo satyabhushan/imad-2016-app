@@ -2,16 +2,17 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 <meta name="google-signin-client_id" content="6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com">
+<link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans" rel="stylesheet">
 <style type="text/css">
 *{
 }
 body{
-margin: 0; font-family: lato; font-size: 16px;
+margin: 0; font-family: lato; font-size: 16px; font-family: 'Lora', serif; color: #272727;
 }
 header{
-position: fixed; width:100%; height:50px; background: #4daf4d; z-index: 900;
+position: fixed; width:100%; height:60px; background: linear-gradient(-60deg, #7b73ad 0%, #f9f9f9 100%); background: #36465d; z-index: 900; box-shadow:0px 1px 5px 0px rgba(54, 70, 93, 0.46);
 }
 .vm{
 position: relative; width:85px; display: inline-block; vertical-align: middle;
@@ -20,38 +21,43 @@ position: relative; width:85px; display: inline-block; vertical-align: middle;
 position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 }
 </style>
-<script type="text/javascript">
+<!--<script type="text/javascript">
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.signOut().then(function () {
 	console.log('User signed out.');
 	});
 }
-</script>
+</script>-->
 </head>
 <body>
 
 <header>
-	<div style="width:650px; margin:auto; position: relative;">
-		<div style=""></div>
+	<div style="width:650px; margin:auto; position: relative; height: 60px;">
+		<div class="incenter" style="">
+			<div style="display: inline-block;vertical-align: middle; height: 27px;">
+				<img src="https://s18.postimg.org/psejdmlax/s_logo1.png" style="height: 100%;">
+			</div>
+			<div style="display: inline-block;vertical-align: middle;font-weight: bold;color: white;font-size: 28px;font-family: 'open sans';text-shadow: 0px 0px 5px #5a5a5a;"><span style="color: #e83751;">#</span><span style="color: #2f9bc7;">S</span></div>
+		</div>
 		<div></div>
 	</div>
 </header>
 
 <div style="position: relative; top:50px;">
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	<a href="#" onclick="signOut();">Sign out</a>
+	<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<a href="#" onclick="signOut();">Sign out</a>-->
 	<div class="artcon">
-		<div style="height:250px; width: 100%; overflow: hidden; background-position: center; background-size: cover; position: relative;background-image: url(http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576);">
+		<div style="height:350px; width: 100%; overflow: hidden; background-position: center; background-size: cover; position: relative;background-image: url(http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576);">
 			<div style="background:linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 80%,  rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.7) 100%); position: relative; height: 100%;">
 				<div style="width: 650px;margin: auto;height: 100%;position: relative;">
-					<div class="incenter" style="text-align: center; color: white; font-size: 40px; font-weight: bold;">Its an article right now.</div>
+					<div class="incenter" style="text-align: center; color: white; font-family: 'Open Sans', sans-serif; text-transform:uppercase; font-size: 40px; font-weight: 800;">Its an article right now.</div>
 					<div style="position: absolute; bottom: 0; left: 0px; width: 100%; padding:10px 20px; box-sizing: border-box;">
-						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
-						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
-						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
-						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
-						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 10px;border: 1px solid;border-radius: 4px;font-size: 13px;">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 12px;border: 1px solid;border-radius: 4px;font-size: 15px;font-family: 'open sans';">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 12px;border: 1px solid;border-radius: 4px;font-size: 15px;font-family: 'open sans';">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 12px;border: 1px solid;border-radius: 4px;font-size: 15px;font-family: 'open sans';">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 12px;border: 1px solid;border-radius: 4px;font-size: 15px;font-family: 'open sans';">Follow</div>
+						<div style="margin-right:3px;display: inline-block;color:white;text-align: center;padding: 5px 12px;border: 1px solid;border-radius: 4px;font-size: 15px;font-family: 'open sans';">Follow</div>
 					</div>
 				</div>
 			</div>
@@ -79,7 +85,7 @@ function signOut() {
 					<div class="head" style="margin: 20px 0;font-size: 22px;font-weight: bold;">Responses</div>
 					<div class="" style="">
 						<div class="position:relative; margin-bottom20px;" style="">
-							<div class="writeresprev" style="padding: 15px;position: relative;height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px; cursor: pointer;">
+							<div class="writeresprev" style="padding: 15px;position: relative;height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d;margin-bottom: 20px;cursor: pointer;border: 1px solid #f5f5f5;">
 								<div class="incenter">
 									<div style="display: inline-block;vertical-align: middle;width: 25px;margin-right: 15px;">
 										<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.5 31.7c-.1 0-.3 0-.4-.1l-5.8-2c-.3-.1-.7-.1-1 .1-2.8 1.5-6.1 2.2-9.3 1.8C6.8 30.7 1 24.8.3 17.6-.2 12.9 1.4 8.3 4.7 5 8 1.7 12.5 0 17.2.4c7.1.6 13 6.1 14.1 13.1.5 3.1.1 6.3-1.3 9.2-.1.3-.2.6-.1.9l1.9 6.6c.1.5 0 1-.4 1.3-.3.1-.6.2-.9.2zM15.9 2.3c-3.7 0-7.2 1.5-9.8 4.1-2.9 2.9-4.3 6.9-3.8 11 .6 6.3 5.7 11.4 12 12.1 2.8.3 5.6-.2 8.1-1.6.8-.4 1.7-.5 2.6-.2l4.6 1.6-1.6-5.2c-.2-.7-.2-1.6.2-2.3 1.2-2.5 1.6-5.3 1.1-8-.9-6.2-6.1-11-12.3-11.5h-1.1z"/></svg></svg>
@@ -87,13 +93,13 @@ function signOut() {
 									<div style="display: inline-block;vertical-align: middle;font-size: 20px;">Write your response.</div>
 								</div>
 							</div>
-							<div class="writeres" style="display: none; padding: 15px; position: relative; background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+							<div class="writeres" style="display: none; padding: 15px; position: relative; background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px; border: 1px solid #f5f5f5;">
 								<div class="writehere" contenteditable="true" style="min-height: 50px;background:white;padding: 15px;border: 1px solid #e1e1e1;"></div>
 								<div style="display: inline-block; padding: 7px 20px; background: #34a1ef; color: white; font-weight: bold; margin-top: 14px; border-radius: 5px; cursor: pointer;">Post</div>
 							</div>
 						</div>
 						<div>
-							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;border: 1px solid #f5f5f5;box-shadow: 1px 1px 6px -3px #7d7d7d;margin-bottom: 20px;">
 								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
 									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
 								</div>
@@ -102,7 +108,7 @@ function signOut() {
 									<div style="margin-top: 7px;">Its an comment</div>
 								</div>
 							</div>
-							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;border: 1px solid #f5f5f5;box-shadow: 1px 1px 6px -3px #7d7d7d;margin-bottom: 20px;">
 								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
 									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
 								</div>
@@ -111,7 +117,7 @@ function signOut() {
 									<div style="margin-top: 7px;">Its an comment</div>
 								</div>
 							</div>
-							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;border: 1px solid #f5f5f5;box-shadow: 1px 1px 6px -3px #7d7d7d;margin-bottom: 20px;">
 								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
 									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
 								</div>
@@ -120,7 +126,7 @@ function signOut() {
 									<div style="margin-top: 7px;">Its an comment</div>
 								</div>
 							</div>
-							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px;">
+							<div style="padding: 15px;position: relative;min-height: 50px;background: rgba(204, 204, 204, 0.07);border-radius: 5px;border: 1px solid #f5f5f5;box-shadow: 1px 1px 6px -3px #7d7d7d;margin-bottom: 20px;">
 								<div style="position: absolute; height: 50px; width: 50px; border-radius: 50%; top:15px; left:15px; overflow: hidden;">
 									<img src="http://i2.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/Space-Galaxy-Circular-Nebula-Vortex-Stars-In-Dark-Blue-Color-WallpapersByte-com-1366x768.jpg?resize=1024%2C576" style="width: 100%; height: 100%;">
 								</div>
@@ -157,17 +163,45 @@ function signOut() {
 <script type="text/javascript">
 (function(){
 	window.onload = function(){
-
+		loadarticles();
 	}
+
+	function loadarticles(){
+		var xhttp = new XMLHttpRequest();
+	  	xhttp.onreadystatechange = function() {
+	    	if (this.readyState == 4 && this.status == 200) {
+	    		document.getElementById("demo").innerHTML = this.responseText;
+	    		console.log(this.responseText);
+	  		}
+	  	};
+	  	xhttp.open('POST','http://sattybhatt.imad.hasura-app.io/987',true);
+     	xhttp.setRequestHeader('Content-type','application/json');
+    	xhttp.send(JSON.stringify({username:username,password:password}));
+	}
+
 })()
-var signined = false;
+/*var signined = false;
 function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
-	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email': profile.getEmail() };
+	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email' profile.getEmail(),'userwebid': 0};
 	console.log(pro);
 	var signined = true;
 	setheader(signined)
 	setDatabase(profile)
+}
+
+function setDatabase(profile){
+	function loadDoc() {
+	  	var xhttp = new XMLHttpRequest();
+	  	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	document.getElementById("demo").innerHTML = this.responseText;
+	  		}
+	  	};
+	  	xhttp.open('POST','http://sattybhatt.imad.hasura-app.io/login',true);
+     	xhttp.setRequestHeader('Content-type','application/json');
+    	xhttp.send(JSON.stringify({username:username,password:password}));
+	}
 }
 
 function setheader(){
@@ -176,7 +210,24 @@ function setheader(){
 	}else{
 
 	}
-}
+}*/
+
+
+//science: http://cdn1.smartvectorpics.com/images/imagesbase/fpik1/boy-learning-science-vector_23-2147492327.jpg
+//technology: http://graphichive.net/uploaded/fordesigner/1313131382.jpg
+//art: http://www.myfreephotoshop.com/wp-content/uploads/2013/11/53.jpg
+//physics: http://static8.depositphotos.com/1006106/892/v/950/depositphotos_8921598-stock-illustration-physics.jpg
+//chemistry: http://previews.123rf.com/images/neyro2008/neyro20081404/neyro2008140400034/27163510-Chimie-illustration-infographie-infographie-mod-le-pour-les-documents-de-la-recherche-m-dicale-et-de-Banque-d'images.jpg
+//biology: http://www.lstmed.ac.uk/sites/default/files/styles/720-scaled/public/content/research-dept/image/ThinkstockPhotos-483478243.jpg?itok=Y02Uy16q
+//graphics: http://graphicdesignjunction.com/wp-content/uploads/2013/05/free_vector_graphics_6.jpg
+//space: https://image.freepik.com/free-vector/outer-space_23-2147516510.jpg
+//entertainment: https://www.colourbox.com/preview/11798760-music-and-entertainment-collage-with-icons-background.jpg
+//polytics: http://www.caribbeanelections.com/images/sections/politcs.jpg https://image.freepik.com/free-vector/political-conference_23-2147511783.jpg
+//sport: http://www.hutui6.com/data/out/182/68155276-sport-wallpapers.jpg
+//fashion: https://cdn.pixabay.com/photo/2016/03/21/22/53/fashion-1271800_960_720.jpg
+//culture: http://hotindianrecipes.com/wp-content/uploads/2014/09/Indian-Culture.jpg
 </script>
 </body>
 </html>
+
+
