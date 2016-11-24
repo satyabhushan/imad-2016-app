@@ -67,8 +67,8 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/ui/imad3.html', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'imad3.html'));
+app.get('/imad3.html', function (req, res) {
+  res.sendFile(path.join(__dirname, '/', 'imad3.html'));
 });
 
 app.get('/topic/:id',function(req,res){
