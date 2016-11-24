@@ -69,6 +69,10 @@ var config = {
     password:process.env.DB_PASSWORD
 };
 
+app.get('/ui/imad2.html', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
+});
+
 app.get('/987',function(req,res){
     res.send("USER IS CORRECT");
 })
