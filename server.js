@@ -87,13 +87,14 @@ app.get('/987/:id',function(req,res){
 
 app.get('/988/:id',function(req,res){
     var artid = req.params.id;
-    pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid a.comartid = "+artid,function(err,result){
+     res.send(artid);
+   /* pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid a.comartid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
             res.send(JSON.stringify(result.rows[0]));    
        }
-    });
+    });*/
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
