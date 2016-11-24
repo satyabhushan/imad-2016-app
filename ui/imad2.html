@@ -200,7 +200,7 @@ function signOut() {
 	    d.src = 'https://s22.postimg.org/h3bbc2ejl/cover_image_generic.jpg';
 	    d = f.getElementsByTagName('img')[0] || d ;
 	    document.getElementsByClassName('artheader')[0].style.backgroundImage = 'url('+d.src+')';
-	    console.log(document.getElementsByClassName('artheader')[0].style.backgroundImage = 'url('+d.src+')',document.getElementsByClassName('artheader')[0].style.backgroundImage,'url('+d.src+')');
+	    console.log(document.getElementsByClassName('artheader')[0].style.backgroundImage,'url('+d.src+')');
 	    var msg = '';
 	    for(var i=0;i<data.tags.length;i++){
 	        msg = '<div class="arttag">'+data.tags[i].tagname+'</div>'
