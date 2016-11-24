@@ -238,7 +238,20 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
     	xhttp.send();
 	}
 	
-	loading('hash')
+	function cd(){
+	    var xhttp = new XMLHttpRequest();
+	  	xhttp.onreadystatechange = function() {
+	    	if (this.readyState == 4 && this.status == 200) {
+	    		//callback.call('',this.responseText)
+	    		console.log(this.responseText);
+	  		}
+	  	};
+	  	xhttp.open('POST','http://satyabhushan.imad.hasura-app.io/hash',true);
+     	xhttp.setRequestHeader('Content-type','application/json');
+    	xhttp.send();
+	}();
+	
+	//loading('hash')
 })();
 </script>
 </body>
