@@ -55,7 +55,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get(/\/987\/*/,function(req,res){
+app.get('/987/:artname',function(req,res){
     //res.send("USER IS CORRECT");
     pool.query("SELECT * from articles",function(err,result){
        if(err){
