@@ -163,10 +163,13 @@ function signOut() {
 <script type="text/javascript">
 (function(){
 	window.onload = function(){
-		loadarticles();
+	    var url = window.location;
+	    var artid = url.pathname;
+	    artid.split('/')[1];
+		loadarticles(artid.split('/')[1]);
 	}
 
-	function loadarticles(){
+	function loadarticles(artid){
 		var xhttp = new XMLHttpRequest();
 	  	xhttp.onreadystatechange = function() {
 	    	if (this.readyState == 4 && this.status == 200) {
@@ -174,7 +177,7 @@ function signOut() {
 	    		console.log(this.responseText);
 	  		}
 	  	};
-	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987',true);
+	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/'+artid,true);
      	xhttp.setRequestHeader('Content-type','application/text');
     	xhttp.send();
 	}
