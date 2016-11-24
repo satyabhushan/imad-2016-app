@@ -29,6 +29,18 @@ var config = {
 
 var pool = new Pool(config);
 
+app.get('/hash/:input',function(req,res){
+    var tc=req.params.input;
+    var tc2=hash(tc,'random-string');
+    res.send(tc2);
+});
+
+function hash(inputstring,salt)
+{
+    var hashed=crypto.pbkdf2Sync(inputstring,salt, 100000, 512, 'sha512');
+    return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
+}
+
 app.get('/test-db',function(req,res){
     pool.query("SELECT * from test",function(err,result){
        if(err){
