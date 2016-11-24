@@ -164,7 +164,8 @@ function signOut() {
 (function(){
     	
 	function loadArt(data){
-	    console.log(data);
+	    data = JSON.parse(data);
+        console.log(data);
 	}
 	
 	function loadComm(data){
