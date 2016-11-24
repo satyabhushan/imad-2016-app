@@ -30,7 +30,7 @@ var config = {
 
 var pool = new Pool(config);
 
-app.get('/hash',function(req,res){
+app.post('/hash',function(req,res){
     //var tc=req.params.input;
     //var tc2=hash(tc,'random-string');
     //req.session.auth = {'user' : 'awesome'};
