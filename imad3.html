@@ -260,7 +260,7 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 	    		console.log(this.responseText);
 	  		}
 	  	};
-	  	xhttp.open('POST','http://satyabhushan.imad.hasura-app.io/new',true);
+	  	xhttp.open('get','http://satyabhushan.imad.hasura-app.io/new',true);
      	xhttp.setRequestHeader('Content-type','application/json');
     	xhttp.send();
 	}
