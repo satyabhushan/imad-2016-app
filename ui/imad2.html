@@ -179,7 +179,7 @@ function signOut() {
 	  	};
 	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/',true);
      	xhttp.setRequestHeader('Content-type','application/text');
-    	xhttp.send({'id':artid});
+    	xhttp.send(JSON.stringify({'id':artid}));
 	}
 
 })();
