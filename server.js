@@ -61,7 +61,7 @@ app.get('/topic/:id',function(req,res){
 
 //app.get('/topic/:id',function(req,res){
 app.get('/987/:article',function(req,res){
-    var artid = req.id;
+    var artid = req.params.id;
     send(artid);
    /* pool.query("SELECT * from articles",function(err,result){
        if(err){
