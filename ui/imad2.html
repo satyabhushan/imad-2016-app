@@ -174,9 +174,9 @@ function signOut() {
 	    		console.log(this.responseText);
 	  		}
 	  	};
-	  	xhttp.open('POST','http://sattybhatt.imad.hasura-app.io/987',true);
-     	xhttp.setRequestHeader('Content-type','application/json');
-    	xhttp.send(JSON.stringify({username:username,password:password}));
+	  	xhttp.open('GET','http://sattybhatt.imad.hasura-app.io/987',true);
+     	xhttp.setRequestHeader('Content-type','application/text');
+    	xhttp.send();
 	}
 
 })();
