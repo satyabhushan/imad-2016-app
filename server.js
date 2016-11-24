@@ -16,8 +16,6 @@ app.use(session({
     cookie:{maxAge:1000*60*60*24*30}
 }));
 
-var app = express();
-app.use(morgan('combined'));
 
 var Pool = require('pg').Pool;
 var config = {
