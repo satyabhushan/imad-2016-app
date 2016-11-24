@@ -37,14 +37,16 @@ app.use(session({
     secret:'randomvalue',
     cookie:{maxAge:1000*60*60*24*30}
 }));
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var counter=0;
+
 app.get('/counter',function(req,res){
     counter=counter+1;
     res.send(counter.toString());
 });
+
 //hashing unit
 app.get('/hash/:input',function(req,res){
     var tc=req.params.input;
@@ -66,6 +68,10 @@ var config = {
     port:'5432',
     password:process.env.DB_PASSWORD
 };
+
+app.get('/987',function(req,res){
+    res.send("USER IS CORRECT");
+})
 
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
