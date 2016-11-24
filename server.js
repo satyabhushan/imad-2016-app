@@ -55,8 +55,13 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
+app.get('/topic/:id',function(req,res){
+    res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
+});
+
+//app.get('/topic/:id',function(req,res){
 app.get('/987/:article',function(req,res){
-    //res.send("USER IS CORRECT");
+    var artid = req.id;
     pool.query("SELECT * from articles",function(err,result){
        if(err){
            res.status(500).send(err.toString());
