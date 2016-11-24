@@ -206,7 +206,7 @@ function signOut() {
 	    document.getElementsByClassName('artheader')[0].style.backgroundImage = 'url('+d.src+')';
 	    var msg = '';
 	    for(var i=0;i<data.tags.length;i++){
-	        msg = '<div class="arttag">'+data.tags[i]+'</div>'
+	        msg = '<div class="arttag">'+data.tags[i].tagname+'</div>'
 	    }
 	    document.getElementsByClassName('tagcon')[0].innerHTML = msg;
 	    document.getElementById('likes').innerHTML = data.nooflikes;
