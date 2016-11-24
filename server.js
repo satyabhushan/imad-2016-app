@@ -70,13 +70,14 @@ app.get('/987/:id',function(req,res){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
                var artdet = result.rows[0];
-               pool.query("SELECT * from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err1,result1){
+               res.send(artdet)
+               /*pool.query("SELECT * from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err1,result1){
                    if(err1){
                         res.status(500).send(err.toString());
                    } else{
                         res.send(result1.rows.length);
                    }
-               });
+               });*/
            }
        }
     });
