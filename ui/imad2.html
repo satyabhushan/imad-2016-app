@@ -177,7 +177,7 @@ function signOut() {
 	    		console.log(this.responseText);
 	  		}
 	  	};
-	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/12',true);
+	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/'+artid,true);
      	xhttp.setRequestHeader('Content-type','application/json');
     	xhttp.send();
 	}
