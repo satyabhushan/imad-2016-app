@@ -88,7 +88,7 @@ app.get('/987/:id',function(req,res){
 app.get('/988/:id',function(req,res){
     var artid = req.params.id;
      //res.send(artid);
-    pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid a.comartid = "+artid,function(err,result){
+    pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid and a.comartid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
