@@ -69,7 +69,7 @@ app.get('/987/:id',function(req,res){
            if(result.rows.length === 0){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
-                res.send(JSON.stringify(result.rows));    
+                res.send(JSON.stringify(result.rows[0]));    
            }
        }
     });
