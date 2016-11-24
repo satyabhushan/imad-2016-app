@@ -75,7 +75,7 @@ app.get('/987/:id',function(req,res){
                        artdet.nooflikes = result.rows[0].nol;
                        pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
                             artdet.noofcomments = result.rows[0].noc;
-                            res.send(artdet);
+                            res.send(artdet); 
                        });
                    });
                });
