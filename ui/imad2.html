@@ -166,7 +166,7 @@ function signOut() {
 	    var url = window.location;
 	    var artid = url.pathname;
 	    artid.split('/')[1];
-		loadarticles(artid.split('/')[1]);
+		loadarticles(artid.split('/')[2]);
 	}
 
 	function loadarticles(artid){
@@ -233,4 +233,5 @@ function setheader(){
 </script>
 </body>
 </html>
+
 
