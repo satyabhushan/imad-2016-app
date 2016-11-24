@@ -62,7 +62,7 @@ app.get('/topic/:id',function(req,res){
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
     res.send(artid);
-   /* pool.query("SELECT * from articles where artid = "+artid,function(err,result){
+    pool.query("SELECT * from articles where artid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
@@ -82,7 +82,7 @@ app.get('/987/:id',function(req,res){
             //   });
            }
        }
-    });*/
+    });
 });
 
 app.get('/988/:id',function(req,res){
