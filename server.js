@@ -59,7 +59,6 @@ app.get('/topic/:id',function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
 });
 
-//app.get('/topic/:id',function(req,res){
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
     pool.query("SELECT * from articles where artid = "+artid,function(err,result){
