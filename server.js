@@ -62,7 +62,7 @@ app.get('/topic/:id',function(req,res){
 //app.get('/topic/:id',function(req,res){
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
-    pool.query("SELECT a.artid as id ,a.arttit as title, a.artdes as description,a.arttime as time,a.artuserid as userid,count(b.artid) as totlike,count(c.comartid) as totcom from articles a,likes b,comments c where a.artid = "+artid+" AND b.artid = "+artid+",c.comartid="+artid+"",function(err,result){
+    pool.query("SELECT * from articles where artid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
@@ -72,12 +72,12 @@ app.get('/987/:id',function(req,res){
                var artdet = result.rows[0];
                pool.query("SELECT a.tagid , a.tagname from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
                    artdet.tags = result.rows;
-                   /*pool.query("SELECT count(a.artid) from likes a where a.artid = "+artid,function(err,result){
+                   pool.query("SELECT count(a.artid) from likes a where a.artid = "+artid,function(err,result){
                        artdet.likes = result.rows[0];
                        pool.query("SELECT count(a.artid) from comments a where a.artid = "+artid,function(err,result){
                            artdet.comments = result.rows[0];
                        });
-                   });*/
+                   });
                    res.send(artdet);
                });
            }
