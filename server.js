@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var path = require('path');
 var crypto = require('crypto');
 var session=require('express-session');
+
 var app = express();
 var bodyParser=require('body-parser');
 app.use(morgan('combined'));
@@ -32,6 +33,7 @@ var pool = new Pool(config);
 app.get('/hash/:input',function(req,res){
     var tc=req.params.input;
     var tc2=hash(tc,'random-string');
+    req.session.outh = {user : 'awesome'};
     res.send(tc2);
 });
 
