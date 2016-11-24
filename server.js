@@ -60,8 +60,8 @@ app.get('/topic/:id',function(req,res){
 });
 
 //app.get('/topic/:id',function(req,res){
-app.post('/987/:article',function(req,res){
-    var artid = req.body.id;
+app.get('/987/:id',function(req,res){
+    var artid = req.params.id;
     res.send(artid);
    /* pool.query("SELECT * from articles",function(err,result){
        if(err){
