@@ -34,6 +34,12 @@ app.post('/hash',function(req,res){
     res.send();
 });
 
+app.get('/test-db',function(req,res){
+    if(req.session && req.session.auth && req.session.user){
+        res.send('working');
+    }
+});
+
 function hash(inputstring,salt)
 {
     var hashed=crypto.pbkdf2Sync(inputstring,salt, 100000, 512, 'sha512');
