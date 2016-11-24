@@ -147,7 +147,7 @@ app.post('/create-user',function(req,res){
        } else{
          alert("Username created:"+username);
        }
-    });
+    }); 
 });
 //end here
 //login user
