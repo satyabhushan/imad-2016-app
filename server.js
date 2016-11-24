@@ -71,7 +71,8 @@ app.get('/987/:id',function(req,res){
            }else{
                var artdet = result.rows[0];
                pool.query("SELECT * from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
-                   res.send(result.rows)
+                   artdet.tags = result.rows;
+                   res.send(artdet)
                });
            }
        }
