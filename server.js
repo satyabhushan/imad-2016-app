@@ -68,17 +68,17 @@ app.get('/987/:id',function(req,res){
            if(result.rows.length === 0){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
-               var artdet = result.rows[0];
-               pool.query("SELECT a.tagid , a.tagname, a.imgsrc from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
-                   artdet.tags = result.rows;
-                   pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
-                       artdet.nooflikes = result.rows[0].nol;
-                       pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
-                            artdet.noofcomments = result.rows[0].noc;
+               //var artdet = result.rows[0];
+               //pool.query("SELECT a.tagid , a.tagname, a.imgsrc from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
+                 //  artdet.tags = result.rows;
+                   //pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
+                     //  artdet.nooflikes = result.rows[0].nol;
+                      // pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
+                        //    artdet.noofcomments = result.rows[0].noc;
                             res.send(artdet); 
-                       });
-                   });
-               });
+                    //   });
+                //   });
+            //   });
            }
        }
     });
