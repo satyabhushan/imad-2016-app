@@ -172,7 +172,7 @@ app.post('/create-user',function(req,res){
            res.status(500).send(err.toString());
        } else{
          alert("Username created:"+username);
-       }
+       } 
     });
 });
 //end here
