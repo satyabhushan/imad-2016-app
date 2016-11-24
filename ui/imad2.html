@@ -194,6 +194,7 @@ function signOut() {
 (function(){
     var global = {};
 	function loadArt(data){
+	    console.log(data);
 	    data = JSON.parse(data);
 	    global.artid=data.artid;
 	    document.getElementsByClassName('arttit')[0].innerHTML = data.arttit;
