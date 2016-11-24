@@ -28,8 +28,8 @@ var config = {
 var pool = new Pool(config);
 
 app.post('/hash',function(req,res){
-    var tc=req.params.input;
-    var tc2=hash(tc,'random-string');
+    //var tc=req.params.input;
+    //var tc2=hash(tc,'random-string');
     req.session.auth = {'user' : 'awesome'};
     res.send();
 });
