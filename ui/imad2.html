@@ -162,25 +162,37 @@ function signOut() {
 </script>
 <script type="text/javascript">
 (function(){
+    	
+	function loadArt(data){
+	    console.log('hello');
+	}
+	
+	function loadComm(data){
+	    
+	}
+    
 	window.onload = function(){
 	    var url = window.location;
 	    var artid = url.pathname;
-	    artid.split('/')[1];
-		loadarticles(artid.split('/')[2]);
+	    //artid.split('/')[1];
+		loadarticles(artid.split('/')[2],loadArt);
 	}
 
-	function loadarticles(artid){
+	function loading(artid,callback,url){
 		var xhttp = new XMLHttpRequest();
 	  	xhttp.onreadystatechange = function() {
 	    	if (this.readyState == 4 && this.status == 200) {
 	    	//	document.getElementById("demo").innerHTML = this.responseHTML;
 	    		console.log(this.responseText);
+	    		callback.call('',this.responseText)
 	  		}
 	  	};
 	  	xhttp.open('GET','http://satyabhushan.imad.hasura-app.io/987/'+artid,true);
      	xhttp.setRequestHeader('Content-type','application/json');
     	xhttp.send();
 	}
+
+	
 
 })();
 
