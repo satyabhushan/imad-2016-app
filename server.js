@@ -69,8 +69,22 @@ app.get('/987/:id',function(req,res){
            if(result.rows.length === 0){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
-                res.send(JSON.stringify(result.rows[0]));    
+               var artdet = result.rows[0];
+               pool.query("SELECT * from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result1){
+                   res.send(result1);
+               });
            }
+       }
+    });
+});
+
+app.get('/988/:id',function(req,res){
+    var artid = req.params.id;
+    pool.query("SELECT * from comments where comartid = "+artid,function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else{
+            res.send(JSON.stringify(result.rows[0]));    
        }
     });
 });
