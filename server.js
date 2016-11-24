@@ -18,6 +18,27 @@ app.use(session({
 var app = express();
 app.use(morgan('combined'));
 
+var Pool = require('pg').Pool;
+var config = {
+    user: 'satyabhushan',
+    database:'satyabhushan',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password:process.env.DB_PASSWORD
+};
+
+var pool = new Pool(config);
+
+app.get('/test-db',function(req,res){
+    pool.query("SELECT * from test",function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else{
+         res.send(JSON.stringify(result.rows));  
+       }
+    });
+});
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -35,7 +56,14 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/987',function(req,res){
-    res.send("USER IS CORRECT");
+    //res.send("USER IS CORRECT");
+    pool.query("SELECT * from test",function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else{
+            res.send(JSON.stringify(result.rows));  
+       }
+    });
 });
 
 
@@ -61,22 +89,19 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/counter',function(req,res){
-    counter=counter+1;
-    res.send(counter.toString());
-});
-
 //hashing unit
 app.get('/hash/:input',function(req,res){
     var tc=req.params.input;
     var tc2=hash(tc,'random-string');
     res.send(tc2);
 });
+
 function hash(inputstring,salt)
 {
     var hashed=crypto.pbkdf2Sync(inputstring,salt, 100000, 512, 'sha512');
     return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
 }
+
 //end here
 //db connection
 var Pool = require('pg').Pool;
