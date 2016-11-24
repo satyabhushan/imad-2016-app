@@ -57,7 +57,7 @@ app.get('/ui/madi.png', function (req, res) {
 
 app.get('/987',function(req,res){
     //res.send("USER IS CORRECT");
-    pool.query("SELECT * from users",function(err,result){
+    pool.query("SELECT * from articles",function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
