@@ -37,6 +37,8 @@ app.post('/hash',function(req,res){
 app.get('/new',function(req,res){
     if(req.session && req.session.auth && req.session.user){
         res.send('working');
+    }else {
+         res.send('not working');
     }
 });
 
