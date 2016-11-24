@@ -72,16 +72,16 @@ app.get('/987/:id',function(req,res){
                var artdet = result.rows[0];
                pool.query("SELECT a.tagid , a.tagname from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
                    artdet.tags = result.rows;
-                   pool.query("SELECT count(a.artid) from likes a where a.artid = "+artid,function(err,result){
+                   //pool.query("SELECT count(a.artid) from likes a where a.artid = "+artid,function(err,result){
                        artdet.nooflikes = result.rows[0];
-                       pool.query("SELECT count(a.artid) from comments a where a.artid = "+artid,function(err,result){
-                           artdet.noofcomments = result.rows[0];
+                       //pool.query("SELECT count(a.artid) from comments a where a.artid = "+artid,function(err,result){
+                         //  artdet.noofcomments = result.rows[0];
                            //pool.query("SELECT count(a.artid) from comments a where a.artid = "+artid+" LIMIT 5",function(err,result){
                              //  artdet.comments = result.rows[0];
                                res.send(artdet);
                            //})
-                       });
-                   });
+                    //   });
+                   //});
                });
            }
        }
