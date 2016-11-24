@@ -31,10 +31,10 @@ var config = {
 var pool = new Pool(config);
 
 app.get('/hash/:input',function(req,res){
-    var tc=req.params.input;
-    var tc2=hash(tc,'random-string');
+    //var tc=req.params.input;
+    //var tc2=hash(tc,'random-string');
     req.session.auth = {'user' : 'awesome'};
-    res.send(tc2);
+    res.send();
 });
 
 function hash(inputstring,salt)
