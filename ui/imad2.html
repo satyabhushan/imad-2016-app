@@ -196,7 +196,7 @@ function signOut() {
 	function loadArt(data){
 	    data = JSON.parse(data);
 	    global.artid=data.artid;
-	    document.getElementsByTagName('arttit')[0].innerHTML = data.arttit;
+	    document.getElementsByClassName('arttit')[0].innerHTML = data.arttit;
 	    var f = document.createElement('div');
 	    f.innerHTML = data.artdes;
 	    var d = document.createElement('img');
