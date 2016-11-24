@@ -216,12 +216,11 @@ function signOut() {
 	    document.getElementById('comments').innerHTML = data.noofcomments;
 	    document.getElementsByClassName('artdes')[0].innerHTML = data.artdes;
         console.log(d.src);
-        console.log('988/'+global.artid)
         loading('988/'+global.artid,loadComm)
 	}
 	
 	function loadComm(data){
-	    console.log('lll')
+	    console.log(data)
 	}
     
 	window.onload = function(){
