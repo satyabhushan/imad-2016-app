@@ -16,7 +16,6 @@ app.use(session({
     cookie:{maxAge:1000*60*60*24*30}
 }));
 
-
 var Pool = require('pg').Pool;
 var config = {
     user: 'satyabhushan',
@@ -29,8 +28,8 @@ var config = {
 var pool = new Pool(config);
 
 app.post('/hash',function(req,res){
-    //var tc=req.params.input;
-    //var tc2=hash(tc,'random-string');
+    var tc=req.params.input;
+    var tc2=hash(tc,'random-string');
     req.session.auth = {'user' : 'awesome'};
     res.send();
 });
