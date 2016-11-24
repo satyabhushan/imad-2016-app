@@ -62,13 +62,14 @@ app.get('/topic/:id',function(req,res){
 //app.get('/topic/:id',function(req,res){
 app.get('/987/:article',function(req,res){
     var artid = req.id;
-    pool.query("SELECT * from articles",function(err,result){
+    send(artid);
+   /* pool.query("SELECT * from articles",function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
             res.send(JSON.stringify(result.rows));  
        }
-    });
+    });*/
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
@@ -147,7 +148,7 @@ app.post('/create-user',function(req,res){
        } else{
          alert("Username created:"+username);
        }
-    }); 
+    });
 });
 //end here
 //login user
