@@ -63,13 +63,17 @@ app.get('/topic/:id',function(req,res){
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
     res.send(artid);
-   /* pool.query("SELECT * from articles",function(err,result){
+    pool.query("SELECT * from articles where artid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
-            res.send(JSON.stringify(result.rows));  
+           if(result.rows.length === 0){
+               res.status(404).send(err.toString('ARTICLE NOT FOUND'));
+           }else{
+                res.send(JSON.stringify(result.rows));    
+           }
        }
-    });*/
+    });
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
