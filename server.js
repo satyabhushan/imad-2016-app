@@ -86,7 +86,7 @@ app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
         pool.query('SELECT a.artid,a.arttit,a.artdes,a.arttime,a.artuserid,c.tagid,c.tagname FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid',function(err,result){
             if(err){
-                //res.send('c working');
+                res.status(500).send(err.toString());
             }else{
                 var data=[],check=[],ind=-1,nol,noc;
                 for(var i=0,l=result.rows.length;i<l;i++){
