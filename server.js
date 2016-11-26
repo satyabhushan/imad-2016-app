@@ -84,7 +84,7 @@ app.get('/topic/:id',function(req,res){
 
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
-        pool.query('SELECT a.artid FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid',function(err,result){
+        pool.query('SELECT a.artid,a.arttit,a.artdes,a.arttime,a.artuserid,c.tagid,c.tagname FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid',function(err,result){
             if(err){
                 //res.send('c working');
             }else{
