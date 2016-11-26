@@ -88,16 +88,24 @@ app.get('/887/:id',function(req,res){
             if(err){
                 //res.send('c working');
             }else{
-                var data=[],check=[],ind=-1;
+                var data=[],check=[],ind=-1,nol,noc;
                 for(var i=0,l=result.rows.length;i<l;i++){
                     ind = check.indexOf(result.rows[i].artid);
                     if(ind>-1){
                         data[ind].tags.push({tagid:result.rows[i].tagid,tagname:result.rows[i].tagname});
                     }else{
-                        check.push(result.rows[i].artid);
-                        data.push({artid:result.rows[i].artid,arttit:result.rows[i].arttit,artdes:result.rows[i].artdes,arttime:result.rows[i].arttime,artuserid:result.rows[i].artuserid,tags:[{tagid:result.rows[i].tagid,tagname:result.rows[i].tagname}]});
+                        pool.query("SELECT sum(1) as noc from likes a where="+result.rows[i].artid,function(err,result){
+                            nol = result.rows[0].noc || 0;
+                            pool.query("SELECT sum(1) as nol from comments a where="+result.rows[i].artid,function(err,result){
+                                noc = result.rows[0].nol || 0;
+                                check.push(result.rows[i].artid);
+                                data.push({artid:result.rows[i].artid,arttit:result.rows[i].arttit,artdes:result.rows[i].artdes,arttime:result.rows[i].arttime,artuserid:result.rows[i].artuserid,noc:noc,nol:nol,tags:[{tagid:result.rows[i].tagid,tagname:result.rows[i].tagname}]});
+                                
+                            });
+                        });
                     }
                 }
+                
                 res.send(JSON.stringify(data));
             }
         });
