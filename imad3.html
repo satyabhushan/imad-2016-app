@@ -215,6 +215,7 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
         var arts = data.arts,f= document.createElement('div'),d= document.createElement('img'),msg='';
         console.log(arts)
         for(var i=0,l=arts.length;i<l;i++){
+            msg = '';
             f.innerHTML = arts[i].artdes;
             f.getElementsByTagName('img')[0];
             d.src = 'https://s22.postimg.org/h3bbc2ejl/cover_image_generic.jpg';
