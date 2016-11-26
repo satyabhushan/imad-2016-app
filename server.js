@@ -136,7 +136,7 @@ app.get('/987/:id',function(req,res){
                            res.status(500).send(err.toString());
                    }else{
                         artdet.tags = result.rows;
-                       pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
+                       /*pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
                            if(err){
                                res.status(500).send(err.toString());
                            }else{
@@ -148,11 +148,12 @@ app.get('/987/:id',function(req,res){
                                    }else{
                                        res.send(JSON.stringify(artdet));
                                    }
-                               });*/
+                               });
                                res.send(JSON.stringify(artdet));
                            }
                             
-                       }); 
+                       }); */
+                       res.send(JSON.stringify(artdet));
                    }
                    
                }); 
