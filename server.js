@@ -91,7 +91,7 @@ app.get('/887/:id',function(req,res){
                 var data=[],check=[],ind=-1;
                 for(var i=0,l=result.rows.length;i<l;i++){
                     ind = check.indexOf(result.rows[i].artid);
-                    if(ind>0){
+                    if(ind>-1){
                         data[ind].tags.push({tagid:result.rows[i].tagid,tagname:result.rows[i].tagname});
                     }else{
                         check.push(result.rows[i].artid);
