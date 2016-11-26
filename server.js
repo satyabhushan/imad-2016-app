@@ -85,7 +85,11 @@ app.get('/topic/:id',function(req,res){
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
         pool.query("SELECT  from articles a left join tagscon b on a.artid==b.artid limit 10",function(err,result){
-            res.send(JSON.stringify(result.rows));
+            if(err){
+                res.send(JSON.stringify(result.rows));
+            }else{
+                res.send('c working');
+            }
         });
     //}else {
          res.send('not working');
