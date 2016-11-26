@@ -3,13 +3,18 @@
 <head>
 <style type="text/css">
 *{
-
 }
 body{
-margin: 0; font-family: lato; font-size: 16px;
+margin: 0; font-family: lato; font-size: 16px; font-family: 'Lora', serif; color: #272727;
 }
 header{
-position: fixed; width:100%; height:50px; background: #4daf4d; z-index: 900;
+position: fixed; width:100%; height:60px; background: linear-gradient(-60deg, #7b73ad 0%, #f9f9f9 100%); background: #36465d; z-index: 900; box-shadow:0px 1px 5px 0px rgba(54, 70, 93, 0.46);
+}
+.vm{
+position: relative; width:85px; display: inline-block; vertical-align: middle;
+}
+.incenter{
+position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 }
 .mm{
 position: relative; background: #f5f5f5; top: 50px;
@@ -37,12 +42,6 @@ font-size: 25px; font-weight: bold; color: #3e3e3e;
 }
 .artres{
 position: absolute; top: 0; right: 15px; width: 80px;
-}
-.vm{
-position: relative; width:24px; top:13px; display: inline-block;
-}
-.incenter{
-position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 }
 </style>
 </head>
