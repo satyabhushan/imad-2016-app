@@ -78,10 +78,13 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 	        float: left; width:180px; position: relative; margin: 0 0 20px 20px; 
 	    }
 	    .ymftagbg{
-	        position: relative; width: 100%; padding-top:100%;  overflow: hidden; border-radius: 5px;
+	        position: relative; width: 100%; padding-top:100%;  overflow: hidden; border-radius: 5px; background-position: center; background-size: cover;
 	    }
 	    .ymftagnm{
 	        text-align: center;
+	    }
+	    .ymftagcvr{
+	        position: absolute; height: 100%; width: 100%; color: white; top:0; right: 0; background:rgba(0,0,0,0.3);
 	    }
 	    .followbtn{
 	        margin-top: 8px;text-align: center;padding: 6px;border: 1px solid;border-radius: 4px;
@@ -178,7 +181,7 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
                 document.getElementsByClassName('arcts')[1].appendChild(f.firstChild);
         }
         for(i=0,l=data.kftags.length;i<l;i++){
-            msg ='<div class="ymftag"><div class="ymftagbg" style="background-image: url(\''+data.kftags[i].tagimg+'\');"><div style="position: absolute; height: 100%; width: 100%; color: white; top:0; right: 0;"><div class="ymftagnm incenter">'+data.kftags[i].tagname+'</div></div></div><div class="followbtn">Follow</div></div>';
+            msg ='<div class="ymftag"><div class="ymftagbg" style="background-image: url(\''+data.kftags[i].tagimg+'\');"><div class="ymftagcvr"><div class="ymftagnm incenter">'+data.kftags[i].tagname+'</div></div></div><div class="followbtn">Follow</div></div>';
             f.innerHTML = msg;
             document.getElementsByClassName('ymftags')[0].appendChild(f.firstChild);
         }
