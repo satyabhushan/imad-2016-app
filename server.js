@@ -84,7 +84,7 @@ app.get('/topic/:id',function(req,res){
 
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
-        pool.query("SELECT a.artid from articles as a",function(err,result){
+        pool.query("SELECT a.artid from (articles as a)",function(err,result){
             if(err){
                 res.send('c working');
             }else{
