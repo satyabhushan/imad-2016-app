@@ -131,7 +131,7 @@ app.get('/987/:id',function(req,res){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
                var artdet = result.rows[0];
-               pool.query("SELECT c.tagid,c.tagname,c.tagimg FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid where a.artid"+artid+") ",function(err,result){
+               pool.query("SELECT c.tagid as tagid,c.tagname as tagname,c.tagimg as tagimg FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid where a.artid"+artid+") ",function(err,result){
                    if(err){
                            res.status(500).send(err.toString());
                    }else{
