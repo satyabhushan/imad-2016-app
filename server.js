@@ -131,7 +131,7 @@ app.get('/987/:id',function(req,res){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
                var artdet = result.rows[0];
-               pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
+              /* pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
                    if(err){
                            res.status(500).send(err.toString());
                    }else{
@@ -152,11 +152,12 @@ app.get('/987/:id',function(req,res){
                                res.send(JSON.stringify(artdet));
                            }
                             
-                       }); */
+                       }); 
                        res.send(JSON.stringify(artdet));
                    }
                    
-               }); 
+               });*/
+               res.send(JSON.stringify(artdet));
            }
        }
     });
