@@ -220,8 +220,9 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
             d.src = 'https://s22.postimg.org/h3bbc2ejl/cover_image_generic.jpg';
 	        d = f.getElementsByTagName('img')[0] || d ;
             msg += '<div class="article"><div class="artimg" style="background-image: url('+d.src+')"><div class="artcover"><div class="arttagp">';
-            for(var j=0,lt=arts[i].tags.length;i<lt;j++)
+            for(var j=0,lt=arts[i].tags.length;j<lt;j++){
                 msg += '<div class="tags">'+arts[i].tags[j].tagname+'</div>';
+            }
             msg += '</div></div></div><div class="arttit"><div class="artit">'+arts[i].arttit+'</div></div></div>';
             f.innHTML = msg;
             if(i==0||i==1)
