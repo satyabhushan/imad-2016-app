@@ -107,7 +107,10 @@ app.get('/887/:id',function(req,res){
                         data.push({artid:result.rows[i].artid,arttit:result.rows[i].arttit,artdes:result.rows[i].artdes,arttime:result.rows[i].arttime,artuserid:result.rows[i].artuserid,tags:[{tagid:result.rows[i].tagid,tagname:result.rows[i].tagname}]});
                     }
                 }
-                
+                var ran = Math.floor(Math.random()*13);
+                pool.query("SELECT tagid,tagname,tagpic from tags where tagid="+(ran%5+1)+" or tagid="+(ran%5+2)+" or tagid="+(ran%5+3)+" or tagid="+(ran%5+4)+" or tagid="+(ran%5)+"",function(err,result){
+                    data = { arts: data,kftags: [result.rows] };
+                });
                 res.send(JSON.stringify(data));
             }
         });
