@@ -95,7 +95,7 @@ app.get('/887/:id',function(req,res){
                         data[ind].tags.push({tagid:result.rows[i].tagid,tagname:result.rows[i].tagname});
                     }else{
                         check.push(result.rows[i].artid);
-                        data.push({artid:result.rows[i].artid,arttit:result.rows[i].artid,artdes:result.rows[i].artid,arttime:result.rows[i].artid,artuserid:result.rows[i].artuserid,tags:[{tagid:result.rows[i].tagid,tagname:result.rows[i].tagname}]});
+                        data.push({artid:result.rows[i].artid,arttit:result.rows[i].arttit,artdes:result.rows[i].artdes,arttime:result.rows[i].arttime,artuserid:result.rows[i].artuserid,tags:[{tagid:result.rows[i].tagid,tagname:result.rows[i].tagname}]});
                     }
                 }
                 res.send(JSON.stringify(data));
