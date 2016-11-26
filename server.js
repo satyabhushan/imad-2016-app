@@ -84,7 +84,7 @@ app.get('/topic/:id',function(req,res){
 
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
-        pool.query('SELECT a.artid,a.arttit,a.artdis,a.arttime,a.userid,c.tagid,c.tagname FROM articles a INNER JOIN tagscon b ON a.artid = b.tagartid INNER JOIN tags c on b.tagid=c.tagid inner join likes d on a.artid = d.artid inner join comments e on a.artid = e.comartid',function(err,result){
+        pool.query('SELECT a.artid,a.arttit,a.artdis,a.arttime,a.userid,c.tagid,c.tagname FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid left join likes d on a.artid = d.artid left join comments e on a.artid = e.comartid',function(err,result){
             if(err){
                 //res.send('c working');
             }else{
