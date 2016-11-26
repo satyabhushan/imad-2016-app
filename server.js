@@ -88,8 +88,8 @@ app.get('/887/:id',function(req,res){
           //  res.send(JSON.stringify(result.rows));
         //});
     }else {
-    //     res.send('not working');
-    //}
+         res.send('not working');
+    }
     
 });
 
