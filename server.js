@@ -87,7 +87,7 @@ app.get('/887/:id',function(req,res){
         pool.query('SELECT articles.artid FROM articles INNER JOIN tagscon ON articles.artid = tagscon.artid',function(err,result){
             if(err){
                 //res.send('c working');
-                res.send(JSON.stringify(result.rows));
+                res.send(result.rows);
             }else{
                 res.send(JSON.stringify(result.rows));
             }
