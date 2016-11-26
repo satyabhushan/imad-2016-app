@@ -85,7 +85,7 @@ app.get('/topic/:id',function(req,res){
 app.get('/887/:id',function(req,res){
     if(req.session && req.session.auth && req.session.auth.user){
         pool.query("SELECT  from articles a left join tagscon b on a.artid==b.artid inner join tags c where c.tagid=b.tagid order by a.artid limit 10",function(err,result){
-            res.send(result.rows);
+            res.send(JSON.stringify(result.rows));
         })
     }else {
          res.send('not working');
@@ -110,7 +110,7 @@ app.get('/987/:id',function(req,res){
                        artdet.nooflikes = result.rows[0].nol;
                        pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
                             artdet.noofcomments = result.rows[0].noc;
-                            res.send(artdet); 
+                            res.send(JSON.stringify(artdet)); 
                        });
                    });
                });
