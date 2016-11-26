@@ -132,20 +132,29 @@ app.get('/987/:id',function(req,res){
            }else{
                var artdet = result.rows[0];
                pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
-                   artdet.tags = result.rows;
-                   pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
-                       if(err){
+                   if(err){
                            res.status(500).send(err.toString());
-                       }else{
-                           
-                       }
-                        artdet.noofcomments = result.rows[0].noc;
-                       /*pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
-                            artdet.nooflikes = result.rows[0].nol;
-                            res.send(JSON.stringify(artdet)); 
-                       });*/
-                       res.send(JSON.stringify(artdet));
-                   });
+                   }else{
+                        artdet.tags = result.rows;
+                       pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
+                           if(err){
+                               res.status(500).send(err.toString());
+                           }else{
+                                artdet.noofcomments = result.rows[0].noc;
+                               /*pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
+                                    artdet.nooflikes = result.rows[0].nol;
+                                    if(err){
+                                       res.status(500).send(err.toString());
+                                   }else{
+                                       res.send(JSON.stringify(artdet));
+                                   }
+                               });*/
+                               res.send(JSON.stringify(artdet));
+                           }
+                            
+                       }); 
+                   }
+                   
                }); 
            }
        }
