@@ -123,7 +123,7 @@ app.get('/887/:id',function(req,res){
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
     res.send(artid);
-    /*pool.query("SELECT * from articles where artid = "+artid,function(err,result){
+    pool.query("SELECT * from articles where artid = "+artid,function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else{
@@ -131,7 +131,7 @@ app.get('/987/:id',function(req,res){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
                var artdet = result.rows[0];
-               pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
+               /*pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
                    artdet.tags = result.rows;
                    pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
                        artdet.nooflikes = result.rows[0].nol;
@@ -140,10 +140,11 @@ app.get('/987/:id',function(req,res){
                             res.send(JSON.stringify(artdet)); 
                        });
                    });
-               });
+               });*/
+               res.send(JSON.stringify(artdet)); 
            }
        }
-    });*/
+    });
 });
 
 app.get('/988/:id',function(req,res){
