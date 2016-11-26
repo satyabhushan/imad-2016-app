@@ -215,7 +215,7 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
         var arts = data.arts,f= document.createElement('div'),im= document.createElement('img'),msg='';
         for(var i=0,l=arts.length;i<l;i++){
             f.innerHTML = arts[i].artdes;
-            f.getsElementsByTagName('img')[0];
+            f.getElementsByTagName('img')[0];
             d.src = 'https://s22.postimg.org/h3bbc2ejl/cover_image_generic.jpg';
 	        d = f.getElementsByTagName('img')[0] || d ;
             msg += '<div class="article"><div class="artimg" style="background-image: url('+d.src+')"><div class="artcover"><div class="arttagp">';
