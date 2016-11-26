@@ -84,12 +84,13 @@ app.get('/topic/:id',function(req,res){
 
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
-        pool.query("SELECT a.tagid , a.tagname, a.tagimg from tags a",function(err,result){
-            //if(err){
+        pool.query("SELECT * from articles a inner join tagscon b on a.artid = b.artid",function(err,result){
+            if(err){
+                res.send('c working');
+            }else{
                 res.send(JSON.stringify(result.rows));
-            //}else{
-              //  res.send('c working');
-            //}
+                
+            }
         });
     //}else {
          //res.send('not working');
@@ -108,7 +109,7 @@ app.get('/987/:id',function(req,res){
                res.status(404).send(err.toString('ARTICLE NOT FOUND'));
            }else{
                var artdet = result.rows[0];
-               pool.query("SELECT a.tagid , a.tagname, a.tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
+               pool.query("SELECT a.tagid , a.tagname, a,tagimg from tags a where a.tagid = (select b.tagid from tagscon b where b.tagartid = "+artid+") ",function(err,result){
                    artdet.tags = result.rows;
                    pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
                        artdet.nooflikes = result.rows[0].nol;
