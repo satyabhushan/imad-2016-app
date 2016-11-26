@@ -119,7 +119,7 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
             for(var j=0,lt=arts[i].tags.length;j<lt;j++){
                 msg += '<div class="tags">'+arts[i].tags[j].tagname+'</div>';
             }
-            msg += '</div></div></div><div class="arttit"><div class="artit">'+arts[i].arttit+'</div></div></div>';
+            msg += '</div></div><div class="arttit"><div class="artit">'+arts[i].arttit+'</div></div></div>';
             f.innerHTML = msg;
             if(i==0||i==1)
                 document.getElementsByClassName('arcts')[0].appendChild(f.firstChild);
