@@ -11,10 +11,10 @@ var app = express();
 var bodyParser=require('body-parser');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-/*app.use(session({
+app.use(session({
     secret:'randomvalue',
     cookie:{maxAge:1000*60*60*24*30}
-}));*/
+}));
 
 var Pool = require('pg').Pool;
 var config = {
@@ -30,7 +30,7 @@ var pool = new Pool(config);
 app.post('/hash',function(req,res){
     //var tc=req.params.input;
     //var tc2=hash(tc,'random-string');
-    //delete req.session.auth;
+    delete req.session.auth;
     //req.session.auth = {'user' : 'awesome'};
     res.send('logged in');
 });
@@ -48,16 +48,6 @@ function hash(inputstring,salt)
     var hashed=crypto.pbkdf2Sync(inputstring,salt, 100000, 512, 'sha512');
     return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
 }
-
-app.get('/test-db',function(req,res){
-    pool.query("SELECT * from test",function(err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       } else{
-         res.send(JSON.stringify(result.rows));  
-       }
-    });
-});
 
 /*app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
