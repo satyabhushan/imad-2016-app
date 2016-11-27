@@ -30,8 +30,9 @@ var pool = new Pool(config);
 app.post('/hash',function(req,res){
     //var tc=req.params.input;
     //var tc2=hash(tc,'random-string');
-    req.session.auth = {'user' : 'awesome'};
-    res.send();
+    delete req.session.auth;
+    //req.session.auth = {'user' : 'awesome'};
+    res.send('logged out');
 });
 
 app.get('/new',function(req,res){
