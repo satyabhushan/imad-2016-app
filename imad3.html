@@ -386,6 +386,14 @@ position: absolute; top: 0; right: 15px; width: 80px;
     </div>
 </div>
 <script>
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	var pro = {'id' : profile.getId(),'name': profile.getName() , 'imageurl': profile.getImageUrl() ,'email' profile.getEmail(),'userwebid': 0};
+	console.log(pro);
+	/*var signined = true;
+	setheader(signined)
+	setDatabase(profile)/*
+}
     //document.getElementsByClassName('overpg')[0].
 </script>
 </body>
