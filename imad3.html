@@ -2,6 +2,8 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:800" rel="stylesheet">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com">
 <style type="text/css">
 *{
 }
@@ -317,8 +319,14 @@ position: absolute; top: 0; right: 15px; width: 80px;
 <div class="overpg" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: white;top: 60px;;">
     <div class="ldng"><ul class="loading"><li></li><li></li><li></li></ul></div>
 </div>
-<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.8);top: 60px;;">
-    <div></div>
+<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px;;">
+    <div style="background:white; width:400px;">
+        <div style="text-align:center; padding:20px; backrgound:orange; color:white;">Login</div>
+        <div style="text-align:center; padding:20px;">
+            <div class="g-signin2" data-onsuccess="onSignIn" style="width:100%;"></div>
+            <div></div>
+        </div>
+    </div>
 </div>
 <script>
     //document.getElementsByClassName('overpg')[0].
