@@ -20,6 +20,59 @@ position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 a{
 color:inherit; text-decoration:none; 
 }
+.ldng{
+ position: absolute; top: 0; left: 0; bottom: 0; width: 100%;
+}
+.ldng > .loading{
+ list-style: none; margin: 0; padding: 0; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+}
+.loading li {
+height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 20px; width: 20px; border-radius: 100%; -webkit-transform: transformZ(0); transform: transformZ(0); -webkit-animation: LOADING 2s infinite; animation: LOADING 2s infinite; background: rgba(0,0,0,0.7)
+}
+.loading li:nth-child(1n) {
+ left: -25px; -webkit-animation-delay: 0s; animation-delay: 0s;
+}
+.loading li:nth-child(2n) {
+  left: 0; -webkit-animation-delay: 0.2s; animation-delay: 0.2s;
+}
+.loading li:nth-child(3n) {
+ left: 25px; -webkit-animation-delay: 0.4s; animation-delay: 0.4s;
+ }
+ @-webkit-keyframes LOADING {
+  0% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+  50% {
+	-webkit-transform: scale(1);
+			transform: scale(1);
+	//background: white;
+  }
+  100% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+}
+ @keyframes LOADING {
+  0% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+  50% {
+	-webkit-transform: scale(1);
+			transform: scale(1);
+	//background: white;
+  }
+  100% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+}
+
 .mm{
 position: relative; background: #f5f5f5; top: 60px;
 }
@@ -229,6 +282,9 @@ position: absolute; top: 0; right: 15px; width: 80px;
 		<div style="text-align: center; margin-top: 5px;">24</div>
 	</div>
 </div>-->
+<div class="overpg" style="position:fixed; height:calc(100% - 60px ); width:100%; z-index;600;">
+    <div class="ldng"><ul class="loading"><li></li><li></li><li></li></ul></div>
+</div>
 <div>
     
 </div>
