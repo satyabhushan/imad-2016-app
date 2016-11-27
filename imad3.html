@@ -214,7 +214,8 @@ position: absolute; top: 0; right: 15px; width: 80px;
             f.innerHTML = msg;
             document.getElementsByClassName('ymftags')[0].appendChild(f.firstChild);
         }
-        document.getElementsByClassName('overpg')[0].style.diplay='none';
+        var m=document.getElementsByClassName('overpg')[0];
+        m.style.display='none';
     }
     
 	window.onload = function(){
