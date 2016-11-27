@@ -11,10 +11,10 @@ var app = express();
 var bodyParser=require('body-parser');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(session({
+/*app.use(session({
     secret:'randomvalue',
     cookie:{maxAge:1000*60*60*24*30}
-}));
+}));*/
 
 var Pool = require('pg').Pool;
 var config = {
@@ -30,7 +30,7 @@ var pool = new Pool(config);
 app.post('/hash',function(req,res){
     //var tc=req.params.input;
     //var tc2=hash(tc,'random-string');
-    delete req.session.auth;
+    //delete req.session.auth;
     //req.session.auth = {'user' : 'awesome'};
     res.send('logged in');
 });
