@@ -20,6 +20,61 @@ position: relative; width:85px; display: inline-block; vertical-align: middle;
 .incenter{
 position: relative; top:50%; left:50%; transform: translate( -50% , -50% );
 }
+a{
+color:inherit; text-decoration:none; 
+}
+.ldng{
+ position: absolute; top: 0; left: 0; bottom: 0; width: 100%;
+}
+.ldng > .loading{
+ list-style: none; margin: 0; padding: 0; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+}
+.loading li {
+height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 20px; width: 20px; border-radius: 100%; -webkit-transform: transformZ(0); transform: transformZ(0); -webkit-animation: LOADING 2s infinite; animation: LOADING 2s infinite; background: rgba(0,0,0,0.7)
+}
+.loading li:nth-child(1n) {
+ left: -25px; -webkit-animation-delay: 0s; animation-delay: 0s;
+}
+.loading li:nth-child(2n) {
+  left: 0; -webkit-animation-delay: 0.2s; animation-delay: 0.2s;
+}
+.loading li:nth-child(3n) {
+ left: 25px; -webkit-animation-delay: 0.4s; animation-delay: 0.4s;
+ }
+ @-webkit-keyframes LOADING {
+  0% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+  50% {
+	-webkit-transform: scale(1);
+			transform: scale(1);
+	//background: white;
+  }
+  100% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+}
+ @keyframes LOADING {
+  0% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+  50% {
+	-webkit-transform: scale(1);
+			transform: scale(1);
+	//background: white;
+  }
+  100% {
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+	//background: #2b8ccd;
+  }
+}
 </style>
 <!--<script type="text/javascript">
 function signOut() {
@@ -224,7 +279,9 @@ function signOut() {
 	    document.getElementById('comments').innerHTML = data.noofcomments;
 	    document.getElementsByClassName('artdes')[0].innerHTML = data.artdes;
         console.log(d.src);
-        loading('988/'+global.artid,loadComm)
+        loading('988/'+global.artid,loadComm);
+        var m=document.getElementsByClassName('overpg')[0];
+        m.style.display='none';
 	}
 	
 	function loadComm(data){
@@ -311,6 +368,9 @@ function setheader(){
 //fashion: https://cdn.pixabay.com/photo/2016/03/21/22/53/fashion-1271800_960_720.jpg
 //culture: http://hotindianrecipes.com/wp-content/uploads/2014/09/Indian-Culture.jpg
 </script>
+<div class="overpg" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: white;top: 60px;;">
+    <div class="ldng"><ul class="loading"><li></li><li></li><li></li></ul></div>
+</div>
 </body>
 </html>
 
