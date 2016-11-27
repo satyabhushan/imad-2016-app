@@ -32,7 +32,7 @@ app.post('/hash',function(req,res){
     //var tc2=hash(tc,'random-string');
     delete req.session.auth;
     //req.session.auth = {'user' : 'awesome'};
-    res.send('logged out');
+    res.send('logged in');
 });
 
 app.get('/new',function(req,res){
