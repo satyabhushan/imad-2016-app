@@ -12,7 +12,7 @@ var bodyParser=require('body-parser');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
-    secret:'randomvalue',
+    secret:'46889',
     cookie:{maxAge:1000*60*60*24*30}
 }));
 
