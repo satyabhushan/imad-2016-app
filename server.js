@@ -73,7 +73,7 @@ app.get('/topic/:id',function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
 });
 
-function isloggedin(){
+function isloggedin(req){
     if(req.session && req.session.auth && req.session.auth.user){
         return true;
     }else {
@@ -109,7 +109,7 @@ app.get('/887/:id',function(req,res){
                 var ran = Math.floor(Math.random()*13);
                 pool.query("SELECT tagid,tagname,tagimg from tags where tagid="+(ran%5+1)+" or tagid="+(ran%5+2)+" or tagid="+(ran%5+3)+" or tagid="+(ran%5+4)+" or tagid="+(ran%5+5)+"",function(err,result){
                     data = { arts: data,kftags: result.rows };
-                    data = { islogged : isloggedin(), otherdata: data  };
+                    data = { isloggedin : isloggedin(req), otherdata: data  };
                     res.send(JSON.stringify(data));                    
                 });
             }
@@ -146,7 +146,7 @@ app.get('/987/:id',function(req,res){
                                     if(err){
                                        res.status(500).send(err.toString());
                                    }else{
-                                       artdet = { isloggedin : isloggedin(), otherdata: artdet };
+                                       artdet = { isloggedin : isloggedin(req), otherdata: artdet };
                                        res.send(JSON.stringify(artdet));
                                    }
                                });
