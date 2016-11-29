@@ -73,6 +73,14 @@ app.get('/topic/:id',function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
 });
 
+function isloggedin(){
+    if(req.session && req.session.auth && req.session.auth.user){
+        return true;
+    }else {
+        return false;
+    }
+}
+
 app.get('/887/:id',function(req,res){
     //if(req.session && req.session.auth && req.session.auth.user){
         pool.query('SELECT a.artid,a.arttit,a.artdes,a.arttime,a.artuserid,c.tagid,c.tagname FROM articles a left JOIN tagscon b ON a.artid = b.tagartid left JOIN tags c on b.tagid=c.tagid',function(err,result){
@@ -101,6 +109,7 @@ app.get('/887/:id',function(req,res){
                 var ran = Math.floor(Math.random()*13);
                 pool.query("SELECT tagid,tagname,tagimg from tags where tagid="+(ran%5+1)+" or tagid="+(ran%5+2)+" or tagid="+(ran%5+3)+" or tagid="+(ran%5+4)+" or tagid="+(ran%5+5)+"",function(err,result){
                     data = { arts: data,kftags: result.rows };
+                    data = { isloggedin : loggedin, otherdata: data  };
                     res.send(JSON.stringify(data));                    
                 });
             }
@@ -137,18 +146,14 @@ app.get('/987/:id',function(req,res){
                                     if(err){
                                        res.status(500).send(err.toString());
                                    }else{
+                                       artdet = { isloggedin : isloggedin(), otherdata: artdet };
                                        res.send(JSON.stringify(artdet));
                                    }
                                });
-                              // res.send(JSON.stringify(artdet));
                            }
-                            
-                       }); 
-                      // res.send(JSON.stringify(artdet));
+                       });
                    }
-                   
                });
-              // res.send(JSON.stringify(artdet));
            }
        }
     });
