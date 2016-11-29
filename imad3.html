@@ -225,12 +225,19 @@ position: absolute; top: 0; right: 15px; width: 80px;
 	</div>
 </div>
 <script>
-
+var glb = {};
 (function(){
+    var loggedin = flase;
+    
+    glb.isloggedin = function(){
+        return loggedin;
+    }
+    
     function loadart(data){
         data = JSON.parse(data);
+        loggedin = data.isloggedin;
+        data = data.otherdata;
         var arts = data.arts,f= document.createElement('div'),d= document.createElement('img'),msg='';
-        console.log(data)
         for(var i=0,l=arts.length;i<l;i++){
             msg = '';
             f.innerHTML = arts[i].artdes;
@@ -279,12 +286,8 @@ position: absolute; top: 0; right: 15px; width: 80px;
 	document.getElementsByClassName('op').onclock = function(){
 	    
 	}
-	
-
-	
-	//loading('hash')
 })();
-	function cdr(){
+	/*function cdr(){
 	    console.log('we');
 	    var xhttp = new XMLHttpRequest();
 	  	xhttp.onreadystatechange = function() {
@@ -309,7 +312,7 @@ position: absolute; top: 0; right: 15px; width: 80px;
 	  	xhttp.open('POST','http://satyabhushan.imad.hasura-app.io/hash',true);
      	xhttp.setRequestHeader('Content-type','application/json');
     	xhttp.send();
-	})();
+	})();*/
 </script>
 
 <!--<div class="artres">
