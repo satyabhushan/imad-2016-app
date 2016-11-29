@@ -236,6 +236,7 @@ var glb = {};
     function loadart(data){
         data = JSON.parse(data);
         loggedin = data.isloggedin;
+        console.log(loggedin);
         data = data.otherdata;
         var arts = data.arts,f= document.createElement('div'),d= document.createElement('img'),msg='';
         for(var i=0,l=arts.length;i<l;i++){
