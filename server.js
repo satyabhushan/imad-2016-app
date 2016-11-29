@@ -109,7 +109,7 @@ app.get('/887/:id',function(req,res){
                 var ran = Math.floor(Math.random()*13);
                 pool.query("SELECT tagid,tagname,tagimg from tags where tagid="+(ran%5+1)+" or tagid="+(ran%5+2)+" or tagid="+(ran%5+3)+" or tagid="+(ran%5+4)+" or tagid="+(ran%5+5)+"",function(err,result){
                     data = { arts: data,kftags: result.rows };
-                    data = { isloggedin : isloggedin(), otherdata: data  };
+                    //data = { isloggedin : isloggedin(), otherdata: data  };
                     res.send(JSON.stringify(data));                    
                 });
             }
