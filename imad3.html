@@ -405,6 +405,24 @@ function onSignIn(googleUser) {
 	setheader(signined)
 	setDatabase(profile)*/
 }
+
+
+(function(){
+    document.getElementById('ussignup').onclick = function(){
+        document.getElementsByClassName('loginform').style.display='block';
+         document.getElementsByClassName('logninpro').style.display='none';
+        document.getElementsByClassName('signuppro').style.display='block';
+    }
+    document.getElementById('uslogin').onclick = function(){
+        document.getElementsByClassName('loginform').style.display='block';
+        document.getElementsByClassName('signuppro').style.display='none';
+        document.getElementsByClassName('logninpro').style.display='block';
+    }
+    /*document.getElementsByClassName('ussignup')[0].onclick = function(){
+        document.getElementsByClassName('loginform').style.display='block';
+        document.getElementsByClassName('signuppro').style.display='block';
+    }*/
+})()
     //document.getElementsByClassName('overpg')[0].
 </script>
 </body>
