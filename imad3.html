@@ -361,6 +361,12 @@ var glb = {};
 .sbtn:hover{
     background:#589092;
 }
+.loginform{
+    display:none;
+}
+.formsal{
+    display:none;
+}
 </style>
 <div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px;">
     <div class="logninpro formsal">
@@ -412,6 +418,11 @@ function onSignIn(googleUser) {
         document.getElementsByClassName('loginform')[0].style.display='block';
          document.getElementsByClassName('logninpro')[0].style.display='none';
         document.getElementsByClassName('signuppro')[0].style.display='block';
+    }
+    document.getElementById('uslogin').onclick = function(){
+        document.getElementsByClassName('loginform')[0].style.display='block';
+        document.getElementsByClassName('signuppro')[0].style.display='none';
+        document.getElementsByClassName('logninpro')[0].style.display='block';
     }
     document.getElementById('uslogin').onclick = function(){
         document.getElementsByClassName('loginform')[0].style.display='block';
