@@ -449,7 +449,7 @@ function onSignIn(googleUser) {
         document.getElementsByClassName('loginform').style.display='block';
         document.getElementsByClassName('signuppro').style.display='block';
     }*/
-    var closebtns = document.getElementsByClassName('formclose').onclick 
+    var closebtns = document.getElementsByClassName('formclose');
     for(var i=0;i<closebtns.length;i++){
         closebtns[i].onclick = function(){
             console.log('hello');
