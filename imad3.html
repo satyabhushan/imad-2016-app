@@ -449,11 +449,14 @@ function onSignIn(googleUser) {
         document.getElementsByClassName('loginform').style.display='block';
         document.getElementsByClassName('signuppro').style.display='block';
     }*/
-    document.getElementsByClassName('formclose').onclick = function(){
-        console.log('hello');
-        document.getElementsByClassName('loginform')[0].style.display='none';
-        document.getElementsByClassName('signuppro')[0].style.display='none';
-        document.getElementsByClassName('logninpro')[0].style.display='none';
+    var closebtns = document.getElementsByClassName('formclose').onclick 
+    for(var i=0;i<closebtns.length;i++){
+        closebtns[i].onclick = function(){
+            console.log('hello');
+            document.getElementsByClassName('loginform')[0].style.display='none';
+            document.getElementsByClassName('signuppro')[0].style.display='none';
+            document.getElementsByClassName('logninpro')[0].style.display='none';
+        }
     }
 })()
     //document.getElementsByClassName('overpg')[0].
