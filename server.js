@@ -5,16 +5,16 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var crypto = require('crypto');
-var session=require('express-session');
+//var session=require('express-session');
 
 var app = express();
 var bodyParser=require('body-parser');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(session({
+/*app.use(session({
     secret:'46889',
     cookie:{maxAge:1000*60*60*24*30}
-}));
+}));*/
 
 var Pool = require('pg').Pool;
 var config = {
