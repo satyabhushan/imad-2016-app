@@ -433,33 +433,30 @@ function onSignIn(googleUser) {
 
 
 (function(){
-    document.getElementById('ussignup').onclick = function(){
+    function showsignform() {
         document.getElementsByClassName('loginform')[0].style.display='block';
          document.getElementsByClassName('logninpro')[0].style.display='none';
         document.getElementsByClassName('signuppro')[0].style.display='block';
     }
-    document.getElementById('uslogin').onclick = function(){
+    function showlogform(){
         document.getElementsByClassName('loginform')[0].style.display='block';
         document.getElementsByClassName('signuppro')[0].style.display='none';
         document.getElementsByClassName('logninpro')[0].style.display='block';
     }
-    document.getElementById('uslogin').onclick = function(){
+    function closebothform(){
         document.getElementsByClassName('loginform')[0].style.display='block';
         document.getElementsByClassName('signuppro')[0].style.display='none';
         document.getElementsByClassName('logninpro')[0].style.display='block';
     }
-    /*document.getElementsByClassName('ussignup')[0].onclick = function(){
-        document.getElementsByClassName('loginform').style.display='block';
-        document.getElementsByClassName('signuppro').style.display='block';
-    }*/
+    
+    document.getElementById('ussignup').onclick = showsignform; 
+    document.getElementById('uslogin').onclick = showlogform;
+    document.getElementById('uslogin').onclick = closebothform;
+    document.getElementsByClassName('loginfirst')[0].onclick = showlogform;
+    document.getElementsByClassName('singupfirst')[0].onclick = showsignform;
     var closebtns = document.getElementsByClassName('formclose');
     for(var i=0;i<closebtns.length;i++){
-        closebtns[i].onclick = function(){
-            console.log('hello');
-            document.getElementsByClassName('loginform')[0].style.display='none';
-            document.getElementsByClassName('signuppro')[0].style.display='none';
-            document.getElementsByClassName('logninpro')[0].style.display='none';
-        }
+        closebtns[i].onclick = closebothform;
     }
 })()
     //document.getElementsByClassName('overpg')[0].
