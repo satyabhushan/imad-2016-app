@@ -282,7 +282,7 @@ var glb = {};
 	  	method = method || 'GET';
 	  	xhttp.open(method,'http://satyabhushan.imad.hasura-app.io/'+url,true);
      	xhttp.setRequestHeader('Content-type','application/json');
-	  	(data != undefiend) ? xhttp.send(data) || xhttp.send();
+	  	(data != undefiend) ? xhttp.send(data) : xhttp.send();
 	}
 	
 	document.getElementsByClassName('op').onclock = function(){
