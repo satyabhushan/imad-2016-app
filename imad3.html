@@ -365,7 +365,7 @@ var glb = {};
     display:none;
 }
 .formsal{
-    display:none;
+    display:none; overflow:hidden; border-radius:5px;
 }
 .intmvlogsign{
     opacity:0.7; margin-top:15px;
@@ -390,9 +390,11 @@ var glb = {};
                     <span class="incenter">or</span>
                 </div>
                 <div>
-                    <div><input type="text" class="ibtn" placeholder="username"></div>
-                    <div><input type="password" class="ibtn" placeholder="password"></div>
-                    <div><input type="submit" class="sbtn"></div>
+                    <form id="bkform1" action="#" method="post">
+                        <div><input type="text" class="ibtn" placeholder="username"></div>
+                        <div><input type="password" class="ibtn" placeholder="password"></div>
+                        <div><input type="submit" class="sbtn"></div>
+                    </form>
                 </div>
                 <div class="singupfirst intmvlogsign">New to <span style="font-family:'open sans';"></span><span style="color: #e83751;">Awesome</span><span style="color: #2f9bc7;">Blog</span></span>. Click here to Signup first.</div>
             </div>
@@ -412,9 +414,12 @@ var glb = {};
                     <span class="incenter">or</span>
                 </div>
                 <div>
-                    <div><input type="text" class="ibtn" placeholder="username"></div>
-                    <div><input type="password" class="ibtn" placeholder="password"></div>
-                    <div><input type="submit" class="sbtn"></div>
+                    <form id="bkform2" action="#" method="post">
+                        <div><input type="text" class="ibtn" placeholder="username"></div>
+                        <div><input type="password" class="ibtn" placeholder="Password"></div>
+                        <div><input type="password" class="ibtn" placeholder="Retype Password"></div>
+                        <div><input type="submit" class="sbtn"></div>
+                    </form>
                 </div>
                 <div class="loginfirst intmvlogsign">Already have an account. Click here to login</div>
             </div>
@@ -455,11 +460,11 @@ function onSignIn(googleUser) {
     document.getElementsByClassName('loginfirst')[0].onclick = showlogform;
     document.getElementsByClassName('singupfirst')[0].onclick = showsignform;
     var closebtns = document.getElementsByClassName('formclose');
+    
     for(var i=0;i<closebtns.length;i++){
         closebtns[i].onclick = closebothform;
     }
 })()
-    //document.getElementsByClassName('overpg')[0].
 </script>
 </body>
 </html>
