@@ -391,8 +391,8 @@ var glb = {};
                 </div>
                 <div>
                     <form id="bkform1" action="#" method="post">
-                        <div><input type="text" class="ibtn" placeholder="username"></div>
-                        <div><input type="password" class="ibtn" placeholder="password"></div>
+                        <div><input type="text" class="ibtn usrnmlog" placeholder="username"></div>
+                        <div><input type="password" class="ibtn usrpsslog" placeholder="password"></div>
                         <div><input type="submit" class="sbtn"></div>
                     </form>
                 </div>
@@ -415,9 +415,9 @@ var glb = {};
                 </div>
                 <div>
                     <form id="bkform2" action="#" method="post">
-                        <div><input type="text" class="ibtn" placeholder="username"></div>
-                        <div><input type="password" class="ibtn" placeholder="Password"></div>
-                        <div><input type="password" class="ibtn" placeholder="Retype Password"></div>
+                        <div><input type="text" class="ibtn usrnmsign" placeholder="username"></div>
+                        <div><input type="password" class="ibtn usrpsssign" placeholder="Password"></div>
+                        <div><input type="password" class="ibtn usrrpsssign" placeholder="Retype Password"></div>
                         <div><input type="submit" class="sbtn"></div>
                     </form>
                 </div>
@@ -425,6 +425,10 @@ var glb = {};
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    
 </div>
 <script>
 function onSignIn(googleUser) {
@@ -463,6 +467,15 @@ function onSignIn(googleUser) {
     
     for(var i=0;i<closebtns.length;i++){
         closebtns[i].onclick = closebothform;
+    }
+    
+    document.forms[0].onsubmit = function(e){
+        e.preventDefault();
+        e.stoppropogation();
+        var inusrnm = document.getElementsByClassName('usrnmlog');
+        var inpass = document.getElementsByClassName('usrpsslog');
+        if(inusrnm.value.length > 0)
+            if(inusrnm.value.length > 0)
     }
 })()
 </script>
