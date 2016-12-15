@@ -31,11 +31,11 @@ function hash(inputstring,salt)
 }
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'imad3.html'));
+  res.sendFile(path.join(__dirname, '/', 'imad3.html'));
 });
 
 app.get('/topic/:id',function(req,res){
-    res.sendFile(path.join(__dirname, 'public', 'imad2.html'));
+    res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
 });
 
 function islogin(req){
