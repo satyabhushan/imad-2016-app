@@ -312,7 +312,6 @@ app.get('/887/:id',function(req,res){
     });
     
 });
-
 app.get('/987/:id',function(req,res){
     var artid = req.params.id;
     //res.send(artid);
@@ -329,18 +328,44 @@ app.get('/987/:id',function(req,res){
                            res.status(500).send(err.toString());
                    }else{
                         artdet.tags = result.rows;
-                       pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
+                        pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
                            if(err){
                                res.status(500).send(err.toString());
                            }else{
                                 artdet.noofcomments = result.rows[0].noc;
-                               pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
-                                    artdet.nooflikes = result.rows[0].nol;
+                                pool.query("SELECT count(a.artid) as nol from likes a where a.artid = "+artid,function(err,result){
                                     if(err){
                                        res.status(500).send(err.toString());
-                                   }else{
-                                       artdet = { isloggedin : isloggedin(req), otherdata: artdet };
-                                       res.send(JSON.stringify(artdet));
+                                    }else{
+                                        artdet.nooflikes = result.rows[0].nol;
+                                        if(islogin(req)){
+                                            var user = req.session.auth.user;
+                                            pool.query("SELECT * from likes a where a.artid = "+artid+" and a.userid="+user,function(err,result){
+                                                if(err){
+                                                    console.log(err);
+                                                   res.status(500).send(err.toString());
+                                                }else{
+                                                    var mylk = result.rows.length == 1 ? 'true' : 'false'; 
+                                                    pool.query("SELECT * from comments a where a.comartid = "+artid+" and a.comuserid="+user,function(err,result){
+                                                        if(err){
+                                                            console.log(err);
+                                                           res.status(500).send(err.toString());
+                                                        }else{
+                                                            var mycom = result.rows.length >= 1 ? 'true' : 'false';
+                                                            artdet.mylk = mylk;
+                                                            artdet.mycom = mycom;
+                                                            console.log(artdet,1);
+                                                            isloggedin(req,res,artdet);
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }else{
+                                            console.log(artdet,2);
+                                            isloggedin(req,res,artdet);
+                                        }
+                                       //artdet = { meta : isloggedin(req), otherdata: artdet };
+                                       //res.send(JSON.stringify(artdet));
                                    }
                                });
                            }
@@ -352,17 +377,137 @@ app.get('/987/:id',function(req,res){
     });
 });
 
-app.get('/988/:id',function(req,res){
-    var artid = req.params.id;
-     //res.send(artid);
-    pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid and a.comartid = "+artid,function(err,result){
+app.get('/988',function(req,res){
+    var artid = req.query['artid'],
+        lstcomid = req.query['lstcomid'],
+        data = {};
+    pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid and a.comartid = "+artid+" and a.comid >"+lstcomid+" order by a.comid desc limit 10",function(err,result){
        if(err){
-           res.status(500).send(err.toString());
-       } else{
-            res.send(JSON.stringify(result.rows));    
+            data.err = true;
+            data.errdes = 'Sorry! You can not follow. First you need to login.';
+            res.send(JSON.stringify(data));       
+        } else{
+            console.log(result.rows)
+            data.err = false;
+            data.errdes = 'Done';
+            data.otherdata = result.rows;
+            console.log(data.otherdata)
+            res.send(JSON.stringify(data)); 
        }
     });
 });
+
+app.post('/989',function(req,res){
+    var artid = req.body['artid'],
+        lstcomid = req.body['lstcomid'],
+        tosave = req.body['comment'],
+        data = {},
+        time =new Date().getTime();
+    if(islogin(req)){
+        var user = req.session.auth.user;
+        pool.query('insert into comments (comartid,comuserid,comtime,comment) values($1,$2,$3,$4)',[artid,user,time,tosave],function(err,result){
+            if(err){
+                data.err = true;
+                data.errdes = '1An unknown error occur.';
+                res.send(JSON.stringify(data));       
+            } else{
+                pool.query("SELECT b.userid as userid,b.username as username,b.userpic as userpic,a.comid as comid,a.comtime as comtime,a.comment as comment from comments a,users b where b.userid = a.comuserid and a.comartid = "+artid+" and a.comid >"+lstcomid+" order by a.comid desc",function(err,result){
+                    if(err){
+                        data.err = true;
+                        data.errdes = '2An unknown error occur.';
+                        res.send(JSON.stringify(data));       
+                    } else{
+                        data.otherdata = result.rows;
+                        pool.query("SELECT count(a.comartid) as noc from comments a where a.comartid = "+artid,function(err,result){
+                            if(err){
+                                data.err = true;
+                                data.errdes = '2An unknown error occur.';
+                                res.send(JSON.stringify(data));       
+                            } else{
+                                data.noc = result.rows[0].noc;
+                                pool.query("SELECT * from comments a where a.comartid = "+artid+" and a.comuserid="+user,function(err,result){
+                                    if(err){
+                                        data.err = true;
+                                        data.errdes = '2An unknown error occur.';
+                                        res.send(JSON.stringify(data));       
+                                    } else{
+                                        data.err = false;
+                                        data.errdes = 'Done';
+                                        data.mycom = result.rows.length >=1 ? 'true':'false';
+                                        res.send(JSON.stringify(data)); 
+                                    }
+                                })
+                            }
+                        })
+                    }
+                });
+            }
+        })
+    }else{
+        data.err = true;
+        data.errdes = 'You are not logged in.';
+        res.send(JSON.stringify(data));  
+    }
+})
+
+app.get('/990',function(req,res){
+    var artid = req.query['artid'],data = {};
+    console.log(artid)
+    if(islogin(req)){
+        var user = req.session.auth.user;
+        pool.query("SELECT * from likes a where a.artid = "+artid,function(err,result){
+            if(err){
+                console.log(err);
+                data.err = true;
+                data.errdes = '1An unknown error occur.';
+                res.send(JSON.stringify(data));       
+            } else{
+                var nol = result.rows.length;
+                var isexist = false;
+                data.nol = nol;
+                for(var i=0;i<nol;i++){
+                    if(result.rows[i].artid == artid &&  result.rows[i].userid == user){
+                        isexist =true; break;
+                    }
+                    isexist = false;
+                }
+                if(isexist){
+                    pool.query("delete from likes a where a.artid = "+artid+" and a.userid="+user,function(err,result){
+                        if(err){
+                            data.err = true;
+                            data.errdes = 'An unknown error occur.';
+                            res.send(JSON.stringify(data));       
+                        } else{
+                            data.err = false;
+                            data.errdes = 'Unliked';
+                            data.mylk = 'false';
+                            data.nol -=1;
+                            res.send(JSON.stringify(data));
+                        } 
+                    });
+                }else{
+                    pool.query('insert into likes (artid,userid) values($1,$2)',[artid,user],function(err,result){
+                        if(err){
+                            data.err = true;
+                            data.errdes = 'An unknown error occur.';
+                            res.send(JSON.stringify(data));       
+                        } else{
+                            data.err = false;
+                            data.errdes = 'Liked';
+                            data.mylk = 'true';
+                            data.nol +=1;
+                            res.send(JSON.stringify(data));
+                        } 
+                    })
+                }
+            }
+        })
+    }else{
+        data.err = true;
+        data.errdes = 'You are not logged in.';
+        res.send(JSON.stringify(data));        
+    }
+})
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
