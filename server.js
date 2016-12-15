@@ -90,6 +90,198 @@ function isloggedin(req,res,otherdata){
     }
 }
 
+
+app.get('/logout/:url',function(req,res){
+    var template = '', url = decodeURIComponent(req.params.url);
+
+    if(req.session && req.session.auth && req.session.auth.user){
+        delete req.session.auth.user;
+        template = '<html><head><script>window.location.replace("'+url+'")</script></head><body>logging out ...</body></html>';
+    }else{
+        template = '<html><head></head><body></body></html>';
+    }
+     res.send(template);
+});
+
+app.post('/777',function(req,res){
+    var data = {}
+    var webid = req.body.webid;
+    if(webid === 0){
+        req.body.email ? pool.query("SELECT email from users where email=$1",[req.body.email],function(err,result){
+            if(err){
+                data.err = true;
+                data.errdes = 'An Unkonwn error occur. Please try again later.';
+                res.send(JSON.stringify(data));
+            }else{
+                if(result.rows.length === 0){
+                    console.log(req.body)
+                    if(req.body.usernm && req.body.pass){
+                        var salt = crypto.randomBytes(128).toString('hex');
+                        var pass = hash(req.body.pass,salt)
+                        pool.query('insert into "users" (userfrom,username,email,password) values(0,$1,$2,$3)',[req.body.usernm,req.body.email,pass],function(err,result){
+                            if(err){
+                                data.err = true;
+                                data.errdes = 'An Unkonwn error occur. Please try again later.';
+                                res.send(JSON.stringify(data));
+                            }else {
+                                pool.query('select userid from "users" where email=$1 and username=$2',[req.body.email,req.body.usernm],function(err,result){
+                                    if(err){
+                                        data.err = true;
+                                        data.errdes = 'Account has been successfully created.';
+                                        res.send(JSON.stringify(data));
+                                    }else{
+                                        req.session.auth = {user: result.rows[0].userid};
+                                        data.err = false;
+                                        res.send(JSON.stringify(data));
+                                    }
+                                });
+                            }
+                        });
+                    }else{
+                        data.err = true;
+                        data.errdes = 'An Unkonwn error occur. Please try again later.';
+                        res.send(JSON.stringify(data));
+                    }
+                }else{
+                    data.err = true;
+                    data.errdes = 'This email address already in use.';
+                    res.send(JSON.stringify(data));
+                }
+            }
+        }) : '';
+    }else if(webid === 1 || webid === 2){
+        var email = req.body.email,
+            usernm = req.body.usernm,
+            picture = req.body.picture,
+            userwebid = req.body.userwebid;
+        if(userwebid){
+            pool.query('SELECT * from "users" where (email=$1) or (userfrom=$2 and userwebid=$3)',[email,webid,userwebid],function(err,result){
+                if(err){
+                    data.err = true;
+                    data.errdes = 'An Unkonwn error occur. Please try again later.';
+                    res.send(JSON.stringify(data));
+                }else{
+                    if(result.rows.length === 1){
+                        var userid = result.rows[0].userid
+                        if( result.rows[0].userfrom == 0 && !result.rows[0].userwebid){
+                            pool.query('update "users" set userfrom = $1, userwebid = $2,userpic = $3 where email=$4',[webid,userwebid,picture,email],function(err,result){
+                                if(err){
+                                    data.err = true;
+                                    data.errdes = 'An Unkonwn error occur. Please try again later.';
+                                    res.send(JSON.stringify(data));
+                                }else {
+                                    req.session.auth = {user: userid};
+                                    data.err = false;
+                                    res.send(JSON.stringify(data));
+                                }
+                            });
+                        }else{
+                            console.log('@')
+                            req.session.auth = {user: userid};
+                            data.err = false;
+                            res.send(JSON.stringify(data));
+                        }
+                    }else if(result.rows.length === 0){
+                        pool.query('insert into "users" (userfrom,username,userwebid,userpic,email) values($1, $2, $3, $4, $5)',[webid,usernm,userwebid,picture,email],function(err,result){
+                            if(err){
+                                data.err = true;
+                                data.errdes = 'An Unkonwn error occur. Please try again later.';
+                                res.send(JSON.stringify(data));
+                            }else {
+                                pool.query('select userid from "users" where userfrom= $1 and userwebid= $2',[webid,userwebid],function(err,result){
+                                    if(err){
+                                        data.err = true;
+                                        data.errdes = 'Account has been successfully created.';
+                                        res.send(JSON.stringify(data));
+                                    }else{
+                                        req.session.auth = {user: result.rows[0].userid};
+                                        data.err = false;
+                                        res.send(JSON.stringify(data));
+                                    }
+                                });
+                            }
+                        });                        
+                    }
+                }
+            })
+        }else{
+            data.err = true;
+            data.errdes = 'An Unkonwn error occur. Please try again later.';
+            res.send(JSON.stringify(data));
+        }
+    }else{
+        data.err = true;
+        data.errdes = 'An Unkonwn error occur. Please try again later.';
+        res.send(JSON.stringify(data));
+    }
+});
+
+app.post('/776',function(req,res){
+    var data = {};
+    console.log(req.body)
+    if(req.body.webid === 0){
+        if(!!req.body.email){
+            pool.query("SELECT * from users where email=$1",[req.body.email],function(err,result){
+                if(err){
+                    data.err = true;
+                    data.errdes = 'An Unkonwn error occur. Please try again later.';
+                    res.send(JSON.stringify(data));
+                }else{
+                    if(result.rows.length === 1){
+                        var dbpass = result.rows[0].password;
+                        var inpass = req.body.pass;
+                        var salt = dbpass.split('$')[2];
+                        console.log(inpass,salt)
+                        var haspass = hash(inpass,salt);
+                        if(haspass == dbpass){
+                            req.session.auth = {user: result.rows[0].userid};
+                            data.err = false;
+                            res.send(JSON.stringify(data));
+                        }else{
+                            data.err = true;
+                            data.errdes = 'Incorrect email id or password.';
+                            res.send(JSON.stringify(data));
+                        }
+                    }else {
+                        data.err = true;
+                        data.errdes = 'Incorrect email id or password.';
+                        res.send(JSON.stringify(data));
+                    }
+                }
+            })
+        }
+    }else {
+        data.err = true;
+        data.errdes = '5An Unkonwn error occur. Please try again later.';
+        res.send(JSON.stringify(data));
+    }
+});
+
+app.get('/886/:id',function(req,res){
+    var data = {},
+        tagid = req.params.id,
+        usrid;
+        console.log(tagid)
+    if( islogin(req) ){
+        usrid = req.session.auth.user;
+        pool.query('insert into usrflwngtg(userid,tagid) select $1, tagid from tags a where a.tagid=$2 and a.tagid not in (select b.tagid from usrflwngtg b where b.userid=$3)',[usrid,tagid,usrid],function(err,result){
+            if(err){
+                data.err = true;
+                data.errdes = 'An Unkonwn error occur. Please try again later.';
+                res.send(JSON.stringify(data));
+            }else{
+                data.err = true;
+                data.errdes = 'Followed';
+                res.send(JSON.stringify(data));
+            }
+        });
+    }else{
+        data.err = true;
+        data.errdes = 'Sorry! You can not follow. First you need to login.';
+        res.send(JSON.stringify(data));
+    }
+});
+
 app.get('/887/:id',function(req,res){
     pool.query("select a.artid,a.arttit,a.arttit,a.artdes,d.tagid,d.tagimg,d.tagname from articles a inner join tagscon b on a.artid = b.tagartid "+ (islogin(req) ? " inner join usrflwngtg c on b.tagid  = c.tagid and c.userid = 14  left join tags d on d.tagid=b.tagid" : " left join tags d on d.tagid=b.tagid where b.tagid = 1 or b.tagid = 2 or b.tagid = 8 or b.tagid = 6 ")+" ORDER by random()",function(err,result){
         if(err){
