@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:800" rel="stylesheet">
 <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 <!--<meta name="google-signin-client_id" content="729153533919-tqdq8hqr78dt8p2a1rmpgm3vec6j9nfj.apps.googleusercontent.com">-->
 <script src="https://apis.google.com/js/api:client.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
 body{
 margin: 0; font-family: lato; font-size: 16px; color: #272727;
@@ -81,13 +82,13 @@ position: relative; background: #f5f5f5; top: 50px;
 width:75%; position: relative; margin: auto;
 }
 .container{
-background: #f5f5f5; position: relative; box-sizing:border-box; padding: 20px; overflow: hidden;
+background: #f5f5f5; position: relative; box-sizing:border-box; padding: 20px 0; overflow: hidden;
 }
 .explore{
 background: #57575a; box-sizing:border-box; padding: 20px; overflow: hidden;
 }
 .article{
-overflow: hidden; border-radius: 10px; box-shadow: 1px 1px 6px -3px #7d7d7d; margin-bottom: 20px; background:white; float: left; width: calc( 50% - 30px ); margin-left: 20px;
+overflow: hidden; border-radius: 10px; box-shadow: 1px 1px 6px -3px #7d7d7d; background:white; float: left; width: calc( 50% - 20px ); margin: 10px;
 }
 .artimg{
 height:250px; width: 100%; overflow: hidden; background-position: center; background-size: cover; position: relative;
@@ -101,12 +102,22 @@ font-size: 25px; font-weight: bold; color: #3e3e3e;
 .artres{
 position: absolute; top: 0; right: 15px; width: 80px;
 }
+.mediarow{
+	width:1010px;
+}
+.mid .head{
+	padding: 20px 0;font-size: 33px;color: #717171;font-weight: bold;text-align:center;font-family: 'open sans';
+}
+.mediaexp{
+	width: 800px
+}
+
 </style>
 </head>
 <body>
 <style>
 .hcon{
-    width:75%;margin:auto;position: relative;height: 60px;padding: 0 40px;box-sizing: border-box;
+    margin:auto;position: relative;height: 60px;padding: 0 10px;box-sizing: border-box;
 }
 .signlogbtn{
     display: inline-block;vertical-align: middle;padding: 8px 18px;border:1px solid #fff;border-radius:5px;margin-left: 6px; cursor:pointer;
@@ -141,19 +152,66 @@ position: absolute; top: 0; right: 15px; width: 80px;
 .loggedinusrnm{
     display:inline-block;color: white;vertical-align:middle;font-size: 23px;
 }
+.hederLeft{
+ 	position:absolute; top:0; right:0;
+}
+@media only screen and (max-width: 1060px) {
+	.mediarow{
+		width:calc(100% - 25px);
+	}
+	.mediaexp{
+		width:600px;
+	}
+}
+@media only screen and (max-width: 700px) {
+	.article{
+		width: calc( 100% - 20px );
+	}
+	.arttit{
+		min-height: auto;
+	}
+	.mid .head{
+		font-size: 30px; padding: 10px 0;
+	}
+	.mediaexp{
+		width:400px;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.mid .head{
+		font-size: 25px;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.mediaexp{
+		width: 200px;
+	}
+	header{
+		height: 100px;
+	}
+	.hederLeft{	
+	    position:relative; margin-top: 10px; text-align: center;
+	}
+	.sitelogo{
+		 margin-top: 39px; width:100%; text-align: center;
+	}
+	.mm{
+		top:80px;
+	}
+}
 </style>
 <header>
-	<div class="hcon">
+	<div class="mediarow hcon">
 		<div class="ntloggedin incenter" style="display:none;">
 			<a href="http://satyabhushan.imad.hasura-app.io/"><div class="sitelogo"><span style="color: #e83751;">Awesome</span><span style="color: #2f9bc7;">Blog</span></div></a>
-			<div style="position:absolute; top:0; right:0;">
+			<div class="hederLeft">
 			    <div id="ussignup" class="signlogbtn">Sign up</div>
 			    <div id="uslogin" class="signlogbtn">Log in</div>
 			</div>
 		</div>
 		<div class="ifloggedin incenter" style="display:none;">
 			<a href="http://satyabhushan.imad.hasura-app.io/"><div class="sitelogo"><span style="color: #e83751;">Awesome</span><span style="color: #2f9bc7;">Blog</span></div></a>
-			<div style="position:absolute; top:0; right:0;">
+			<div class="hederLeft">
 			    <div>
 			        <div id="logoutbtn">
 			            <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 .138c-.6 0-1.1.5-1 1.1v8.5c0 .6.5 1.1 1 1.1.6 0 1.1-.5 1.1-1v-8.5c0-.7-.5-1.2-1.1-1.2zm-4.2 2.8c-.1 0-.2 0-.3.1-7 2.2-11.3 9.2-10.2 16.4 1.1 7.2 7.3 12.5 14.6 12.6 7.3 0 13.5-5.3 14.7-12.5 1.1-7.2-3.2-14.2-10.1-16.4-.6-.2-1.2.1-1.3.7-.2.6.1 1.2.7 1.3 6 1.9 9.7 7.9 8.7 14.1-1 6.2-6.3 10.7-12.6 10.7s-11.6-4.6-12.5-10.8c-1-6.2 2.7-12.1 8.7-14 .6-.2.9-.8.7-1.3-.2-.7-.6-1-1.1-.9z"/></svg>
@@ -172,6 +230,9 @@ position: absolute; top: 0; right: 15px; width: 80px;
 
 <div class="signin"></div>
 <style>
+.arts{
+	overflow: hidden;
+}
 .artcover{
     background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%,  rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.7) 100%); position: absolute; height: 100%; width:100%; top:0; right:0;
 }
@@ -183,16 +244,16 @@ position: absolute; top: 0; right: 15px; width: 80px;
 }
 </style>
 <div class="mm">
-	<div class="mid">
+	<div class="mediarow mid">
 		<div class="container">
-			<div class="head" style="padding: 20px;f;font-size: 33px;color: #717171;font-weight: bold;text-align:center;font-family: 'open sans';">Some Awesome blog for you</div>
+			<div class="head">Some Awesome blog for you</div>
 			<div class="arcts">
 			</div>
 		</div>
 	</div>
 	<style>
 	    .ymftagsp{
-    		width: 800px; margin: auto; overflow: hidden; height: 235px;
+    		margin: auto; overflow: hidden; height: 235px;
 	    }
 	    .ymftag{
 	        width:180px; position: relative; margin: 10px;  display: inline-block;
@@ -227,15 +288,15 @@ position: absolute; top: 0; right: 15px; width: 80px;
 	</style>
 	<div class="explore">
 		<div class="head" style="padding-bottom: 15px;font-size: 19px;color: #ffffff; font-weight: bold;text-align: center;">You may also follow these topics</div>
-		<div style="position: relative; width: 800px; margin: auto; ">
+		<div class="mediaexp" style="position: relative; margin: auto; ">
 			<div class="sldmov sldmovl"></div>
-			<div class="ymftagsp" >
+			<div class="mediaexp ymftagsp" >
 				<div class="ymftags" style="width: 2000px;"></div>
 			</div>
 			<div class="sldmov sldmovr"></div>
 		</div>
 	</div>
-	<div class="mid">
+	<div class="mediarow mid">
 		<div class="container">
 			<div class="head"></div>
 			<div class="arcts">
@@ -247,7 +308,7 @@ position: absolute; top: 0; right: 15px; width: 80px;
 			background: #3c3c3e; padding: 20px;
 		}
 		.dvlprinfoc{
-			width: 57%;margin: auto;overflow: hidden;
+			width: 829px;margin: auto;overflow: hidden;
 		}
 		.dvlprlnkh{
 			color: white;text-align: center;
@@ -275,6 +336,22 @@ position: absolute; top: 0; right: 15px; width: 80px;
 		}
 		.dvlprmail{
 			margin-top: 10px;font-size: 13px;color: grey;
+		}
+		@media only screen and (max-width: 860px) {
+			.dvlprinfoc{
+				width: 100%;
+			}
+			.dvlprlnkimgp{
+				margin: 45px auto; float:none;
+			}
+		}
+		@media only screen and (max-width: 860px){
+			.dvlprlnkp{
+				text-align: center; width: 324px; margin: auto;
+			}
+			.dvlprlnkimgp{
+				width: auto; display: inline-block; margin: 20px;
+			}
 		}
 	</style>
 	<div class="dvlprinfo">
@@ -338,7 +415,6 @@ var glb = {};
 
     function loadart(data){
         data = JSON.parse(data);
-        console.log(data);
         loggedin = data.meta.loggedin;
         glb.userInfo = data.meta.userInfo;
         setHeader(glb.userInfo);
@@ -391,7 +467,7 @@ var glb = {};
 	}
 	
 	var scrldiv = document.getElementsByClassName('ymftagsp')[0], scrlam = scrldiv.scrollLeft,movd =0,raf;
-
+	var r=document.getElementsByClassName('ymftagsp')[0]
 	document.getElementsByClassName('sldmovl')[0].onclick = function(){
 		if(scrlam > 0){
 			document.getElementsByClassName('ymftagsp')[0].scrollLeft = scrlam= scrlam - 200;
@@ -399,11 +475,11 @@ var glb = {};
 	}
 
 	document.getElementsByClassName('sldmovr')[0].onclick = function(){
-		if(scrlam <= (lcl.tgl-5)*200){
+		if(scrlam <= (lcl.tgl+(r.clientWidth/200)-3)*200){
 			document.getElementsByClassName('ymftagsp')[0].scrollLeft = scrlam = scrlam + 200;
 		}
 	}
-	
+
 	function settagevent(){
 		var d = document.getElementsByClassName('followbtn');
 		for(var i=0;i<lcl.tgl;i++)
@@ -487,7 +563,7 @@ var glb = {};
 	box-shadow:0 2px 4px 0 rgb(114, 135, 183)
 }
 </style>
-<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px;">
+<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px; overflow: scroll;">
     <div class="formclose" style="position:absolute; height:100%; width:100%; top:0; right:0"></div>
     <div class="logninpro formsal">
         <div class="formh">
@@ -810,7 +886,7 @@ var googleUser = {};
 var startApp = function() {
 	gapi.load('auth2', function(){
 		auth2 = gapi.auth2.init({
-			client_id: '729153533919-tqdq8hqr78dt8p2a1rmpgm3vec6j9nfj.apps.googleusercontent.com',
+			client_id: '6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com',
 			cookiepolicy: 'single_host_origin',
 		});
 		attachSignin(document.getElementById('my-goog'));
