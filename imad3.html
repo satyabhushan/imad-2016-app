@@ -338,6 +338,7 @@ var glb = {};
 
     function loadart(data){
         data = JSON.parse(data);
+        console.log(data);
         loggedin = data.meta.loggedin;
         glb.userInfo = data.meta.userInfo;
         setHeader(glb.userInfo);
