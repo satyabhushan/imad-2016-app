@@ -10,6 +10,8 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
     secret:'46889',
+    resave: true,
+    saveUninitialized: true,
     cookie:{maxAge:1000*60*60*24*30}
 }));
 
