@@ -4,8 +4,11 @@
 <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com">-->
 <script src="https://apis.google.com/js/api:client.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:800" rel="stylesheet">
 <style type="text/css">
+*{
+}
 body{
 margin: 0; font-family: lato; font-size: 16px; font-family: 'Lora', serif; color: #272727;
 }
@@ -79,7 +82,7 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
 
 <style>
 .hcon{
-    width:75%;margin:auto;position: relative;height: 60px;padding: 0 40px;box-sizing: border-box;
+    width:75%;margin:auto;position: relative;height: 60px;box-sizing: border-box;
 }
 .signlogbtn{
     display: inline-block;vertical-align: middle;padding: 8px 18px;border:1px solid #fff;border-radius:5px;margin-left: 6px; cursor:pointer;
@@ -114,19 +117,25 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
 .loggedinusrnm{
     display:inline-block;color: white;vertical-align:middle;font-size: 23px;
 }
+.mediarow{
+	width:800px;
+}
+.hederLeft{
+ 	position:absolute; top:0; right:0;
+}
 </style>
 <header>
-	<div class="hcon">
+	<div class="mediarow hcon">
 		<div class="ntloggedin incenter" style="display:none;">
 			<a href="http://satyabhushan.imad.hasura-app.io/"><div class="sitelogo"><span style="color: #e83751;">Awesome</span><span style="color: #2f9bc7;">Blog</span></div></a>
-			<div style="position:absolute; top:0; right:0;">
+			<div class="hederLeft">
 			    <div id="ussignup" class="signlogbtn">Sign up</div>
 			    <div id="uslogin" class="signlogbtn">Log in</div>
 			</div>
 		</div>
 		<div class="ifloggedin incenter" style="display:none;">
 			<a href="http://satyabhushan.imad.hasura-app.io/"><div class="sitelogo"><span style="color: #e83751;">Awesome</span><span style="color: #2f9bc7;">Blog</span></div></a>
-			<div style="position:absolute; top:0; right:0;">
+			<div class="hederLeft">
 			    <div>
 			        <div id="logoutbtn">
 			            <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 .138c-.6 0-1.1.5-1 1.1v8.5c0 .6.5 1.1 1 1.1.6 0 1.1-.5 1.1-1v-8.5c0-.7-.5-1.2-1.1-1.2zm-4.2 2.8c-.1 0-.2 0-.3.1-7 2.2-11.3 9.2-10.2 16.4 1.1 7.2 7.3 12.5 14.6 12.6 7.3 0 13.5-5.3 14.7-12.5 1.1-7.2-3.2-14.2-10.1-16.4-.6-.2-1.2.1-1.3.7-.2.6.1 1.2.7 1.3 6 1.9 9.7 7.9 8.7 14.1-1 6.2-6.3 10.7-12.6 10.7s-11.6-4.6-12.5-10.8c-1-6.2 2.7-12.1 8.7-14 .6-.2.9-.8.7-1.3-.2-.7-.6-1-1.1-.9z"/></svg>
@@ -150,7 +159,7 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
         height:350px; width: 100%; overflow: hidden; background-position: center; background-size: cover; position: relative;
     }
     .arthdr{
-        background:linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 80%,  rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.7) 100%); position: relative; height: 100%;
+        background:linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 80%,  rgba(0, 0, 0, 0.3) 90%, rgba(0, 0, 0, 0.7) 100%); position: relative; height: 100%;
     }
     .arttitandtag{
         width: 650px;margin: auto;height: 100%;position: relative;
@@ -182,6 +191,41 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
     .artdes iframe{
         width:100%;
     }
+    @media only screen and (max-width: 1060px) {
+		.mediarow{
+			width:calc(100% - 100px);
+		}
+	}
+	@media only screen and (max-width: 650px) {
+		.arttitandtag{
+			width: 100%;
+		}
+	}
+	@media only screen and (max-width: 550px) {
+		.artresanddes{
+			width:auto;
+		}
+		.arttit{
+			font-size: 25px;
+		}
+	}
+	@media only screen and (max-width: 550px) {
+		header{
+			height: 100px;
+		}
+		.hederLeft{	
+		    position:relative; margin-top: 10px; text-align: center;
+		}
+		.sitelogo{
+			 margin-top: 39px; width:100%; text-align: center;
+		}
+		.tcon{
+			top:80px;
+		}
+		.loggedinusrnm{
+			font-size: 16px;
+		}
+	}
 </style>
 <style>
     .head{
@@ -244,6 +288,7 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
     .cmtp[data-commented="true"] > svg{
     	fill:#139622; stroke: #139622; transition: fill 0.5s, stroke 0.5s;
     }
+   
 </style>
 <div class="tcon">
 	<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -339,6 +384,22 @@ height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 2
 		}
 		.dvlprmail{
 			margin-top: 10px;font-size: 13px;color: grey;
+		}
+		@media only screen and (max-width: 860px) {
+			.dvlprinfoc{
+				width: 100%;
+			}
+			.dvlprlnkimgp{
+				margin: 45px auto; float:none;
+			}
+		}
+		@media only screen and (max-width: 860px){
+			.dvlprlnkp{
+				text-align: center; width: 324px; margin: auto;
+			}
+			.dvlprlnkimgp{
+				width: auto; display: inline-block; margin: 20px;
+			}
 		}
 	</style>
 	<div class="dvlprinfo">
@@ -591,13 +652,18 @@ var glb = {};
     opacity:0.85; cursor:pointer;
 }
 .fb-login{
-	width:360px;padding:10px;height: 44px;box-sizing: border-box;margin-top: 15px;background: #39579b;color:white;position: relative;box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);border: 1px solid #2d4782; transition: background-color .218s,border-color .218s,box-shadow .218s; cursor:pointer;
+	width:100%;padding:10px;height: 44px;box-sizing: border-box;margin-top: 15px;background: #39579b;color:white;position: relative;box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);border: 1px solid #2d4782; transition: background-color .218s,border-color .218s,box-shadow .218s; cursor:pointer;
 }
 .fb-login:hover{
 	box-shadow:0 2px 4px 0 rgb(114, 135, 183)
 }
+@media only screen and (max-width: 450px) {
+    .formsal{
+    	width: 320px;
+    }
+}
 </style>
-<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px;">
+<div class="loginform" style="position:fixed;height:calc(100% - 60px );width:100%;z-index;600z-index: 6;background: rgba(255,255,255,0.9);top: 60px; overflow: scroll;">
     <div class="formclose" style="position:absolute; height:100%; width:100%; top:0; right:0"></div>
     <div class="logninpro formsal">
         <div class="formh">
@@ -919,7 +985,7 @@ var googleUser = {};
 var startApp = function() {
 	gapi.load('auth2', function(){
 		auth2 = gapi.auth2.init({
-			client_id: '729153533919-tqdq8hqr78dt8p2a1rmpgm3vec6j9nfj.apps.googleusercontent.com',
+			client_id: '6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com',
 			cookiepolicy: 'single_host_origin',
 		});
 		attachSignin(document.getElementById('my-goog'));
@@ -929,7 +995,7 @@ var startApp = function() {
 var startApp2 = function() {
 	gapi.load('auth2', function(){
 		auth2 = gapi.auth2.init({
-			client_id: '729153533919-tqdq8hqr78dt8p2a1rmpgm3vec6j9nfj.apps.googleusercontent.com',
+			client_id: '6592700229-sq2acbb8tqqgehqm8agvmrp5io4gj1u5.apps.googleusercontent.com',
 			cookiepolicy: 'single_host_origin',
 		});
 		attachSignin(document.getElementById('my-goog2'));
@@ -951,3 +1017,6 @@ startApp();
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>
+
+
+ 
