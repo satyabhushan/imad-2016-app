@@ -283,7 +283,7 @@ app.get('/886/:id',function(req,res){
 });
 
 app.get('/887/:id',function(req,res){
-    pool.query("select a.artid,a.arttit,a.arttit,a.artdes,d.tagid,d.tagimg,d.tagname from articles a inner join tagscon b on a.artid = b.tagartid "+ (islogin(req) ? " inner join usrflwngtg c on b.tagid  = c.tagid and c.userid = 14  left join tags d on d.tagid=b.tagid" : " left join tags d on d.tagid=b.tagid where b.tagid = 1 or b.tagid = 2 or b.tagid = 8 or b.tagid = 6 ")+" ORDER by random()",function(err,result){
+    pool.query("select a.artid,a.arttit,a.arttit,a.artdes,d.tagid,d.tagimg,d.tagname from articles a inner join tagscon b on a.artid = b.tagartid "+ (islogin(req) ? " inner join usrflwngtg c on b.tagid  = c.tagid and c.userid = "+req.session.auth.user+" left join tags d on d.tagid=b.tagid" : " left join tags d on d.tagid=b.tagid where b.tagid = 1 or b.tagid = 2 or b.tagid = 8 or b.tagid = 6 ")+" ORDER by random()",function(err,result){
         if(err){
             console.log(err);
             res.status(500).send(err.toString());
