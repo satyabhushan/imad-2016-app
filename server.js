@@ -20,7 +20,7 @@ var pool = new Pool(config);
 app.use(morgan('combined'));
 app.use(bodyparser.json());
 app.use(session({
-    secret:'some random value',
+    secret:'46889',
     cookie:{maxAge:1000*60*60*24*30}
 }));
 
