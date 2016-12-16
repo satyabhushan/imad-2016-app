@@ -700,6 +700,7 @@ display: none; position: absolute;height: 13px;width: 13px;top: 5px;padding: 4px
     	data = JSON.parse(data);
     	if(data.err){
     		glb.shownoti(data.errdes,'','y');
+    		document.getElementsByClassName('sbtn')[1].value = 'Submit';
     	}else{
 			window.location.reload();
     	}
