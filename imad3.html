@@ -793,6 +793,7 @@ display: none; position: absolute;height: 13px;width: 13px;top: 5px;padding: 4px
             if(data.pass.length > 0){
                 req = true;
             	glb.login(3,data);
+            	document.getElementsByClassName('sbtn')[0].innerText = 'Submitting';
             }else{
                 glb.shownoti('Please Enter the password','','y');
             }
@@ -817,6 +818,7 @@ display: none; position: absolute;height: 13px;width: 13px;top: 5px;padding: 4px
 	        		if( data.pass === document.getElementsByClassName('usrrpsssign')[0].value ){
 	        			req = true;
 	        			glb.login(0,data);
+	        			document.getElementsByClassName('sbtn')[1].innerText = 'Submitting';
 	        		}else{
 	        			glb.shownoti('Retyped password is not matching','','y');
 	        		}
