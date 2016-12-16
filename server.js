@@ -65,6 +65,18 @@ function islogin(req){
     }
 }
 
+app.get('/logout/:url',function(req,res){
+    var template = '', url = decodeURIComponent(req.params.url);
+
+    if(req.session && req.session.auth && req.session.auth.user){
+        delete req.session.auth.user;
+        template = '<html><head><script>window.location.replace("'+url+'")</script></head><body>logging out ...</body></html>';
+    }else{
+        template = '<html><head></head><body></body></html>';
+    }
+     res.send(template);
+});
+
 function isloggedin(req,res,otherdata){
     var meta = {},data = {};
     if(req.session && req.session.auth && req.session.auth.user){
