@@ -37,6 +37,10 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
+app.get('/ui/ab.png', function (req, res) {
+    res.sendFile(path.join(__dirname, 'ui', 'ab.png'));
+})
+
 app.get('/ui/imad2.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'imad2.html'));
 });
