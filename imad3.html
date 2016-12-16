@@ -443,6 +443,7 @@ var glb = {};
         }
         if(document.getElementsByClassName('arcts')[0].children.length == 0){
             msg = '<div style="color: #d3d3d3; font-size: 33px; text-align: center; text-shadow: -1px -1px 3px white; padding: 75px 50px;">Here is lot more to discover.<br>Go and follow some more topics to explore</div>'
+            document.getElementsByClassName('arcts')[0].innerHTML = msg;
         }
         for(i=0,lcl.tgl=data.kftags.length;i<lcl.tgl;i++){
             msg ='<div class="ymftag"><div class="ymftagbg" style="background-image: url(\''+data.kftags[i].tagimg+'\');"><div class="ymftagcvr"><div class="ymftagnm incenter">'+data.kftags[i].tagname+'</div></div></div><div class="followbtn" data-tag="'+data.kftags[i].tagid+'">Follow</div></div>';
