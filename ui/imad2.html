@@ -461,12 +461,10 @@ var glb = {};
     		document.getElementsByClassName('ifloggedin')[0].style.display = 'block';
     		document.getElementsByClassName('loggedinusrpropic')[0].innerHTML = '<img src="'+userinfo.image+'" style="width:100%; height:100%;">';
     		document.getElementsByClassName('loggedinusrnm')[0].innerText = userinfo.name;
-    		//document.getElementById('lgot').href = 'http://satyabhushan.imad.hasura-app.io/logout/'+encodeURIComponent(window.location.href);
     	}else {
 	    	document.getElementsByClassName('ntloggedin')[0].style.display = 'block';
     		document.getElementsByClassName('ifloggedin')[0].style.display = 'none';
     	}
-
     }
     var global = {};
 	function loadArt(data){
@@ -477,6 +475,9 @@ var glb = {};
         data = data.otherdata;
 	    global.artid=data.artid;
 	    document.getElementsByClassName('arttit')[0].innerHTML = data.arttit;
+	    var t=document.createElement('title')
+	    t.innerText = data.arttit;
+	    document.head.appendChild(t)
 	    var f = document.createElement('div');
 	    f.innerHTML = data.artdes;
 	    var d = document.createElement('img');
