@@ -450,6 +450,9 @@ var glb = {};
             f.innerHTML = msg;
             document.getElementsByClassName('ymftags')[0].appendChild(f.firstChild);
         }
+        if(document.getElementsByClassName('ymftags')[0].children.length == 0){
+            document.getElementsByClassName('explore')[0].style.display = 'none';
+        }
         var m=document.getElementsByClassName('overpg')[0];
         m.style.display='none';
         settagevent();
