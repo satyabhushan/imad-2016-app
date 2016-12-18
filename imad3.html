@@ -442,7 +442,7 @@ var glb = {};
                 document.getElementsByClassName('arcts')[1].appendChild(f.firstChild);
         }
         if(document.getElementsByClassName('arcts')[0].children.length == 0){
-            msg = '<div style="color: #d3d3d3; font-size: 33px; text-align: center; text-shadow: -1px -1px 3px white; padding: 75px 50px;">Here is lot more to discover.<br>Go and follow some more topics to explore</div>'
+            msg = '<div style="color: #d3d3d3; font-size: 33px; text-align: center; text-shadow: -1px -1px 3px white; padding: 75px 50px;">Here is lot more to discover.<br>Go forword and follow some more topics of your interest to get explore</div>'
             document.getElementsByClassName('arcts')[0].innerHTML = msg;
         }
         for(i=0,lcl.tgl=data.kftags.length;i<lcl.tgl;i++){
@@ -468,7 +468,7 @@ var glb = {};
 		var xhttp = new XMLHttpRequest();
 	  	xhttp.onreadystatechange = function() {
 	    	if (this.readyState == 4 && this.status == 200) {
-	    		callback.call('',this.responseText)
+	    		callback ? callback.call('',this.responseText) :"";
 	  		}
 	  	};
 	  	method = method || 'GET';
@@ -518,6 +518,10 @@ var glb = {};
 		}else{
 			glb.shownoti(data.errdes,2500,'y')
 		}
+	}
+	
+	if(!localStorage.me){
+	    glb.submitanything('555');
 	}
 })();
 </script>
