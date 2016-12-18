@@ -66,6 +66,7 @@ function islogin(req){
 }
 
 app.get('555',function(req,res){
+    console.log(req.connection.remoteAddress);
     if(req.connection.remoteAddress)
     pool.query('INSERT INTO "visiters" ("visitersIP") VALUES ($1)',[req.connection.remoteAddress],function(err,result){
         if(err){
