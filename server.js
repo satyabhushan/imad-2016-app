@@ -67,7 +67,7 @@ function islogin(req){
 
 app.get('555',function(req,res){
     if(req.connection.remoteAddress)
-    pool.query("insert into visiters (visitersIP) values( $1)",[req.connection.remoteAddress],function(err,result){
+    pool.query('INSERT INTO "visiters" ("visitersIP") VALUES ($1)",[req.connection.remoteAddress],function(err,result){
         console.log(5);
     });
 });
