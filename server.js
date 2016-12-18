@@ -65,6 +65,13 @@ function islogin(req){
     }
 }
 
+app.get('555',function(req,res){
+    if(req.connection.remoteAddress)
+    pool.query("UPDATE visiters SET visitersIP = $1",[req.connection.remoteAddress],function(err,result){
+
+    });
+});
+
 app.get('/logout/:url',function(req,res){
     var template = '', url = decodeURIComponent(req.params.url);
 
