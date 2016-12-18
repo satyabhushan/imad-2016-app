@@ -69,9 +69,9 @@ app.get('555',function(req,res){
     if(req.connection.remoteAddress)
     pool.query('INSERT INTO "visiters" ("visitersIP") VALUES ($1)',[req.connection.remoteAddress],function(err,result){
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
-            console.log('noerr')
+            console.log('noerr');
         }
     });
 });
