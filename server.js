@@ -72,7 +72,7 @@ app.get('/555',function(req,res){
         if(err){
             console.log(err);
         }else{
-            console.log('noerr');
+            console.log(req,'noerr');
         }
     });
 });
